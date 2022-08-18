@@ -74,7 +74,10 @@
 </template>
 
 <script setup lang="ts">
-import { getExplaination } from '@/api/explaination/explaination';
+import {
+  getExplaination,
+  getExplainationDetail
+} from '@/api/explaination/explaination';
 import { deletePolicy, getPolicy } from '@/api/policy/policy';
 import { DataTableColumn, NButton, NPopconfirm, NSpace } from 'naive-ui';
 
@@ -142,7 +145,9 @@ const columns = ref<DataTableColumn[]>([
                 {
                   type: 'primary',
                   size: 'small',
-                  onClick: () => {}
+                  onClick: () => {
+                    editExplaination(row.uuid as string);
+                  }
                 },
                 { default: () => '编辑' }
               ),
@@ -203,9 +208,9 @@ onMounted(async () => {
 });
 
 // Edit
+const router = useRouter();
 async function editExplaination(uuid: string) {
-  const res = await getPolicy(uuid);
-  console.log(res);
+  router.push({ name: 'Explaination_edit', params: { uuid } });
 }
 </script>
 

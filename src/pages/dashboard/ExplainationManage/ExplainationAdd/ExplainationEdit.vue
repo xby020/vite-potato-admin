@@ -15,6 +15,7 @@
     </div>
     <div class="w-full h-full overflow-y-auto p-4 pb-24" v-scrollbar>
       <n-form
+        v-if="formData"
         class="w-2/3 h-full"
         :model="formData"
         ref="formRef"
@@ -74,6 +75,7 @@
               :headers="{
                 Authorization: cookies.get('token')
               }"
+              :default-file-list="defaultList"
               @finish="handleUploadFinished"
               @update:file-list="handleFileChange"
             >
@@ -136,7 +138,8 @@ import cookies from '@/utils/cookies';
 import { getPolicy } from '@/api/policy/policy';
 import {
   addExplaination,
-  getExplaination
+  getExplaination,
+  getExplainationDetail
 } from '@/api/explaination/explaination';
 import '@wangeditor/editor/dist/css/style.css';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
@@ -144,8 +147,15 @@ import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
 const route = useRoute();
 
 const formRef = ref<FormInst>();
-const formData = reactive(route.query.data as any);
+const formData = ref();
 const formRules = ref<FormRules>();
+const defaultList = ref<any[]>([]);
+onMounted(async () => {
+  const uuid = route.params.uuid as string;
+  const res = await getExplainationDetail(uuid);
+  console.log(res);
+  formData.value = res;
+});
 
 // Form options
 const levelOptions = ref([
@@ -220,7 +230,7 @@ function handleUploadFinished(options: {
 
 function handleFileChange(list: UploadFileInfo[]) {
   console.log(list);
-  formData.cover_image_uuid = list.map((item) => item.batchId);
+  formData.value.cover_image_uuid = list.map((item) => item.batchId);
 }
 
 // Editor
