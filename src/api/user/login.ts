@@ -45,7 +45,7 @@ export interface LoginUserInfo {
 }
 
 export function login(params: LoginParams) {
-  return request<LoginUserInfo>({
+  return request<any>({
     url: '/api/v1/manage/user/login',
     method: 'post',
     data: params
