@@ -11,27 +11,50 @@
       <!-- Query -->
       <n-form label-placement="left" :inline="true" size="medium">
         <n-form-item label="政策名称">
-          <n-input v-model="queryParams.policyName" />
+          <n-input v-model:value="queryParams.name" />
         </n-form-item>
         <n-form-item label="解读级别">
-          <n-input v-model="queryParams.policyName" />
+          <n-select
+            v-model:value="queryParams.level"
+            size="medium"
+            :options="levelOptions"
+            clearable
+            class="w-180px"
+          />
         </n-form-item>
         <n-form-item label="归口部门">
-          <n-input v-model="queryParams.policyName" />
+          <n-select
+            v-model:value="queryParams.relate_depart"
+            size="medium"
+            :options="relateDepartOptions"
+            clearable
+            class="w-180px"
+          />
         </n-form-item>
         <n-form-item label="政策类型">
-          <n-input v-model="queryParams.policyName" />
+          <n-select
+            v-model:value="queryParams.type"
+            size="medium"
+            :options="typeOptions"
+            clearable
+            class="w-180px"
+          />
         </n-form-item>
         <n-form-item>
           <div class="w-full flex gap-4">
-            <n-button type="info" size="medium" @click="">搜索</n-button>
-            <n-button type="default" size="medium" @click="">重置</n-button>
+            <n-button type="info" size="medium" @click="handleQuery"
+              >搜索</n-button
+            >
+            <n-button type="default" size="medium" @click="handleReset"
+              >重置</n-button
+            >
             <n-button
               text
               type="info"
               size="medium"
               icon-placement="right"
               @click=""
+              v-if="false"
             >
               <span>展开</span>
               <template #icon>
@@ -47,7 +70,7 @@
       <!-- Table -->
       <div class="flex justify-between items-center mb-4">
         <h1 class="text-lg font-semibold">政策解读列表</h1>
-        <n-button type="info" size="large" @click="">
+        <n-button type="info" size="large" @click="handleCreate">
           <template #icon>
             <n-icon size="24">
               <i-mdi-plus></i-mdi-plus>
@@ -75,17 +98,22 @@
 
 <script setup lang="ts">
 import {
+  deleteExplaination,
   getExplaination,
   getExplainationDetail
 } from '@/api/explaination/explaination';
-import { deletePolicy, getPolicy } from '@/api/policy/policy';
 import { DataTableColumn, NButton, NPopconfirm, NSpace } from 'naive-ui';
+import {
+  levelOptions,
+  relateDepartOptions,
+  typeOptions
+} from './ExplainationOptions';
 
 const queryParams = reactive({
-  policyName: '',
-  policyLevel: '',
-  department: '',
-  enterpriseType: ''
+  name: '',
+  level: '',
+  relate_depart: '',
+  type: ''
 });
 
 // Table
@@ -94,6 +122,7 @@ const loading = ref(false);
 const pagination = reactive({
   page: 1,
   pageSize: 10,
+  pageCount: 1,
   total: 0,
   prefix() {
     return `共${pagination.total}条`;
@@ -156,7 +185,8 @@ const columns = ref<DataTableColumn[]>([
                 {
                   placement: 'bottom',
                   onPositiveClick: () => {
-                    deletePolicy(row.uuid as string);
+                    deleteExplaination(row.uuid as string);
+                    handleReset();
                   }
                 },
                 {
@@ -187,10 +217,15 @@ const columns = ref<DataTableColumn[]>([
 async function queryData(params: any) {
   loading.value = true;
   try {
-    const res: any = await getExplaination(params);
+    const res: any = await getExplaination({
+      page: pagination.page,
+      page_size: pagination.pageSize,
+      ...params
+    });
     console.log(res);
     data.value = res.items;
     pagination.total = res.count;
+    pagination.pageCount = Math.ceil(res.count / pagination.pageSize);
   } catch (err) {
     window.$message.error(JSON.stringify(err));
   } finally {
@@ -207,8 +242,26 @@ onMounted(async () => {
   await queryData({ page: 1, page_size: 10, ...queryParams });
 });
 
-// Edit
 const router = useRouter();
+
+// Query
+async function handleQuery() {
+  await queryData(queryParams);
+}
+async function handleReset() {
+  queryParams.name = '';
+  queryParams.level = '';
+  queryParams.relate_depart = '';
+  queryParams.type = '';
+  await queryData(queryParams);
+}
+
+// Create
+function handleCreate() {
+  router.push({ name: 'Explaination_add' });
+}
+
+// Edit
 async function editExplaination(uuid: string) {
   router.push({ name: 'Explaination_edit', params: { uuid } });
 }

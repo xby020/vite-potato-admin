@@ -1,14 +1,22 @@
 <template>
-  <n-card
-    title="新增政策"
-    size="large"
-    :segmented="{
-      content: true
-    }"
-    class="w-full h-full bg-light-200"
-  >
-    <div class="w-2/3 h-full flex flex-col">
+  <div class="w-full h-full bg-light-200 flex flex-col">
+    <div class="w-full h-16 flex justify-between items-center px-4">
+      <h1 class="text-lg">新增政策</h1>
+
+      <div class="flex gap-2">
+        <n-button
+          type="success"
+          size="large"
+          :loading="submitLoading"
+          @click="submit"
+          >上传</n-button
+        >
+        <n-button type="default" size="large" @click="back">返回</n-button>
+      </div>
+    </div>
+    <div class="w-full flex-auto p-4 overflow-y-auto" v-scrollbar>
       <n-form
+        class="w-2/3"
         :model="formData"
         ref="formRef"
         :rules="formRules"
@@ -59,7 +67,8 @@
 
           <n-form-item-gi :span="1" label="发布日期" path="pub_date">
             <n-date-picker
-              v-model:value="formData.pub_date"
+              v-model:formatted-value="formData.pub_date"
+              value-format="yyyy-MM-dd"
               type="date"
               class="w-full"
               clearable
@@ -179,14 +188,21 @@
         </n-grid>
       </n-form>
     </div>
-  </n-card>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { FormInst, FormRules, UploadFileInfo } from 'naive-ui';
 import cookies from '@/utils/cookies';
-import { getLabels } from '@/api/policy/policy';
+import { addPolicy, getLabels } from '@/api/policy/policy';
 import { getExplaination } from '@/api/explaination/explaination';
+import {
+  levelOptions,
+  relateDepartOptions,
+  typeOptions,
+  declareTypeOptions,
+  entpScaleOptions
+} from '../PolicyOptions';
 
 const formRef = ref<FormInst>();
 const formData = reactive({
@@ -203,60 +219,14 @@ const formData = reactive({
   overview: null,
   support_method: null,
   support_target: null,
-  attachment_uuid: [] as any[],
+  attachment_uuid: '',
   phone: null,
   phone_desc: null,
-  source_uuid: [] as any[],
+  source_uuid: '',
   label_uuid_list: [] // 标签uuid列表
 });
 const formRules = ref<FormRules>();
 
-// Form options
-const levelOptions = ref([
-  { label: '国家级', value: 1 },
-  { label: '省级', value: 2 },
-  { label: '市级', value: 3 },
-  { label: '区级', value: 4 }
-]);
-const relateDepartOptions = ref([
-  { label: '区企服局', value: 1 },
-  { label: '区科创局', value: 2 },
-  { label: '区发改局', value: 3 },
-  { label: '区投促局', value: 4 },
-  { label: '区建设局', value: 5 },
-  { label: '区规划局', value: 6 },
-  { label: '区政务和大数据局', value: 7 },
-  { label: '区城管局', value: 8 },
-  { label: '区市场监管局', value: 9 },
-  { label: '区教育局', value: 10 },
-  { label: '区组织部', value: 11 },
-  { label: '区宣传部', value: 12 },
-  { label: '区政法委', value: 13 },
-  { label: '区社会事务局', value: 14 },
-  { label: '区卫生健康局', value: 15 }
-]);
-const typeOptions = ref([
-  { label: '稳岗就业', value: 1 },
-  { label: '招才引智', value: 2 },
-  { label: '融资支持', value: 3 },
-  { label: '产业扶持', value: 4 },
-  { label: '资金扶持', value: 5 },
-  { label: '减税降费', value: 6 },
-  { label: '评选认定', value: 7 },
-  { label: '开拓市场', value: 8 },
-  { label: '简化审批', value: 9 },
-  { label: '招商入驻', value: 10 },
-  { label: '其他', value: 11 }
-]);
-const declareTypeOptions = ref([
-  { label: '长期有效', value: 1 },
-  { label: '申报类', value: 2 }
-]);
-const entpScaleOptions = ref([
-  { label: '大型企业', value: 1 },
-  { label: '中型企业', value: 2 },
-  { label: '小微企业', value: 3 }
-]);
 const labelOptions = ref<any[]>([]);
 onMounted(async () => {
   const labels = await getLabels();
@@ -312,11 +282,32 @@ function handleUploadFinished(options: {
 
 function handleAttachmentFileChange(list: UploadFileInfo[]) {
   console.log(list);
-  formData.attachment_uuid = list.map((item) => item.batchId);
+  formData.attachment_uuid = list.map((item) => item.batchId)[0] as string;
 }
 function handleSourceFileChange(list: UploadFileInfo[]) {
   console.log(list);
-  formData.source_uuid = list.map((item) => item.batchId);
+  formData.source_uuid = list.map((item) => item.batchId)[0] as string;
+}
+
+// Back
+const router = useRouter();
+function back() {
+  router.push({ name: 'PolicyManage_list' });
+}
+
+// Submit
+const submitLoading = ref(false);
+async function submit() {
+  submitLoading.value = true;
+  try {
+    console.log(formData);
+    // const res = await addPolicy(formData);
+    // console.log(res);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    submitLoading.value = false;
+  }
 }
 </script>
 

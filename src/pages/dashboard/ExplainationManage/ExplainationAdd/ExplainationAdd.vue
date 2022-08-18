@@ -133,13 +133,18 @@
 <script setup lang="ts">
 import { FormInst, FormRules, UploadFileInfo } from 'naive-ui';
 import cookies from '@/utils/cookies';
-import { getLabels, getPolicy } from '@/api/policy/policy';
+import { getPolicy } from '@/api/policy/policy';
 import {
   addExplaination,
   getExplaination
 } from '@/api/explaination/explaination';
 import '@wangeditor/editor/dist/css/style.css';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
+import {
+  levelOptions,
+  relateDepartOptions,
+  typeOptions
+} from '../ExplainationOptions';
 
 const formRef = ref<FormInst>();
 const formData = reactive({
@@ -148,49 +153,13 @@ const formData = reactive({
   type: null,
   relate_depart: null,
   pub_date: null,
-  cover_image_uuid: [] as any[],
+  cover_img_uuid: '',
   relate_policy_uuid: null,
   info: ''
 });
 const formRules = ref<FormRules>();
 
 // Form options
-const levelOptions = ref([
-  { label: '国家级', value: 1 },
-  { label: '省级', value: 2 },
-  { label: '市级', value: 3 },
-  { label: '区级', value: 4 }
-]);
-const relateDepartOptions = ref([
-  { label: '区企服局', value: 1 },
-  { label: '区科创局', value: 2 },
-  { label: '区发改局', value: 3 },
-  { label: '区投促局', value: 4 },
-  { label: '区建设局', value: 5 },
-  { label: '区规划局', value: 6 },
-  { label: '区政务和大数据局', value: 7 },
-  { label: '区城管局', value: 8 },
-  { label: '区市场监管局', value: 9 },
-  { label: '区教育局', value: 10 },
-  { label: '区组织部', value: 11 },
-  { label: '区宣传部', value: 12 },
-  { label: '区政法委', value: 13 },
-  { label: '区社会事务局', value: 14 },
-  { label: '区卫生健康局', value: 15 }
-]);
-const typeOptions = ref([
-  { label: '稳岗就业', value: 1 },
-  { label: '招才引智', value: 2 },
-  { label: '融资支持', value: 3 },
-  { label: '产业扶持', value: 4 },
-  { label: '资金扶持', value: 5 },
-  { label: '减税降费', value: 6 },
-  { label: '评选认定', value: 7 },
-  { label: '开拓市场', value: 8 },
-  { label: '简化审批', value: 9 },
-  { label: '招商入驻', value: 10 },
-  { label: '其他', value: 11 }
-]);
 const relatePolicyOptions = ref<any[]>([]);
 onMounted(async () => {
   const labels = await getPolicy({ page: 1, page_size: 99999 });
@@ -227,7 +196,7 @@ function handleUploadFinished(options: {
 
 function handleFileChange(list: UploadFileInfo[]) {
   console.log(list);
-  formData.cover_image_uuid = list.map((item) => item.batchId);
+  formData.cover_img_uuid = list.map((item) => item.batchId)[0] as string;
 }
 
 // Editor
