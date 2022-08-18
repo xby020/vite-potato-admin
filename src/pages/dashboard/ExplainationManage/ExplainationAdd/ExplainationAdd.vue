@@ -226,6 +226,8 @@ async function submit() {
   try {
     const res = await addExplaination(formData);
     console.log(res);
+    window.$message.success('添加成功');
+    router.push({ name: 'Explaination_list' });
   } catch (err) {
     console.log(err);
   } finally {

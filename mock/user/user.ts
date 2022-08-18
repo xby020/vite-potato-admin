@@ -5,16 +5,16 @@ const userMockData = {
 };
 
 export default [
-  {
-    url: '/api/user/getUser',
-    timeout: 1000,
-    method: 'get',
-    response: () => {
-      return {
-        code: 200,
-        msg: 'success',
-        data: userMockData
-      };
-    }
-  }
+  // {
+  //   url: '/api/user/getUser',
+  //   timeout: 1000,
+  //   method: 'get',
+  //   response: () => {
+  //     return {
+  //       code: 200,
+  //       msg: 'success',
+  //       data: userMockData
+  //     };
+  //   }
+  // }
 ];

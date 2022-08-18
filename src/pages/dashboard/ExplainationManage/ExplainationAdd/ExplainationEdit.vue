@@ -163,7 +163,7 @@ onMounted(async () => {
   formData.value = res;
   defaultList.value = [
     {
-      id: res.cover_image_uuid,
+      id: res.cover_img_uuid,
       name: res.cover_img_name,
       url: res.cover_img_path,
       status: 'finished',

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full bg-light-200 flex flex-col">
     <div class="w-full h-16 flex justify-between items-center px-4">
-      <h1 class="text-lg">新增政策</h1>
+      <h1 class="text-lg">修改政策</h1>
 
       <div class="flex gap-2">
         <n-button
@@ -16,6 +16,7 @@
     </div>
     <div class="w-full flex-auto p-4 overflow-y-auto" v-scrollbar>
       <n-form
+        v-if="formData"
         class="w-2/3"
         :model="formData"
         ref="formRef"
@@ -139,6 +140,7 @@
             <n-upload
               action="/upload"
               list-type="text"
+              :default-file-list="defaultAttachmentsFile"
               :max="1"
               :headers="{
                 Authorization: cookies.get('token')
@@ -169,6 +171,7 @@
             <n-upload
               action="/upload"
               list-type="text"
+              :default-file-list="defaultSourceFile"
               :max="1"
               :headers="{
                 Authorization: cookies.get('token')
@@ -195,7 +198,13 @@
 <script setup lang="ts">
 import { FormInst, FormRules, UploadFileInfo } from 'naive-ui';
 import cookies from '@/utils/cookies';
-import { addPolicy, getLabels } from '@/api/policy/policy';
+import {
+  addPolicy,
+  getLabels,
+  getPolicy,
+  getPolicyDetail,
+  updatePolicy
+} from '@/api/policy/policy';
 import { getExplaination } from '@/api/explaination/explaination';
 import {
   levelOptions,
@@ -205,30 +214,27 @@ import {
   entpScaleOptions
 } from '../PolicyOptions';
 
+const route = useRoute();
+
 const formRef = ref<FormInst>();
-const formData = reactive({
-  name: null,
-  level: null,
-  type: null,
-  relate_depart: null,
-  declare_type: null,
-  pub_date: null,
-  end_date: null,
-  entp_scale: null,
-  payment: null,
-  relate_pi_uuid: null,
-  overview: null,
-  support_method: null,
-  support_target: null,
-  attachment_uuid: '',
-  phone: null,
-  phone_desc: null,
-  source_uuid: '',
-  label_uuid_list: [] // 标签uuid列表
+const formData = ref();
+onMounted(async () => {
+  try {
+    const res = await getPolicyDetail(route.params.uuid as string);
+    formData.value = res;
+  } catch (err) {
+    console.error(err);
+  }
 });
+
 const entRef = ref<any[]>([]);
-watch(entRef, (val) => {
-  formData.entp_scale = entRef.value.join('') as any;
+watch(formData, () => {
+  entRef.value = formData.value.entp_scale
+    .split('')
+    .map((item: any) => Number(item));
+});
+watch(entRef, () => {
+  formData.value.entp_scale = entRef.value.join('');
 });
 const formRules = ref<FormRules>();
 
@@ -276,6 +282,28 @@ onMounted(async () => {
 });
 
 // File upload
+const defaultAttachmentsFile = ref();
+const defaultSourceFile = ref();
+watch(formData, () => {
+  defaultAttachmentsFile.value = [
+    {
+      id: formData.value.attachment_uuid,
+      name: formData.value.attachment_name,
+      url: formData.value.attachment_path,
+      status: 'finished',
+      thumbnailUrl: formData.value.attachment_path
+    }
+  ];
+  defaultSourceFile.value = [
+    {
+      id: formData.value.source_uuid,
+      name: formData.value.source_name,
+      url: formData.value.source_path,
+      status: 'finished',
+      thumbnailUrl: formData.value.source_path
+    }
+  ];
+});
 function handleUploadFinished(options: {
   file: UploadFileInfo;
   event?: ProgressEvent;
@@ -290,11 +318,13 @@ function handleUploadFinished(options: {
 
 function handleAttachmentFileChange(list: UploadFileInfo[]) {
   console.log(list);
-  formData.attachment_uuid = list.map((item) => item.batchId)[0] as string;
+  formData.value.attachment_uuid = list.map(
+    (item) => item.batchId
+  )[0] as string;
 }
 function handleSourceFileChange(list: UploadFileInfo[]) {
   console.log(list);
-  formData.source_uuid = list.map((item) => item.batchId)[0] as string;
+  formData.value.source_uuid = list.map((item) => item.batchId)[0] as string;
 }
 
 // Back
@@ -308,10 +338,10 @@ const submitLoading = ref(false);
 async function submit() {
   submitLoading.value = true;
   try {
-    console.log(formData);
-    const res = await addPolicy(formData);
+    console.log(formData.value);
+    const res = await updatePolicy(route.params.uuid as string, formData.value);
     console.log(res);
-    window.$message.success('添加成功');
+    window.$message.success('修改成功');
     router.push({ name: 'PolicyManage_list' });
   } catch (err) {
     console.log(err);

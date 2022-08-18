@@ -11,27 +11,69 @@
       <!-- Query -->
       <n-form label-placement="left" :inline="true" size="medium">
         <n-form-item label="政策名称">
-          <n-input v-model="queryParams.policyName" />
+          <n-input v-model:value="queryParams.name" />
         </n-form-item>
         <n-form-item label="政策级别">
-          <n-input v-model="queryParams.policyName" />
+          <n-select
+            v-model:value="queryParams.level"
+            size="medium"
+            :options="levelOptions"
+            clearable
+            class="w-120px"
+          />
         </n-form-item>
         <n-form-item label="归口部门">
-          <n-input v-model="queryParams.policyName" />
+          <n-select
+            v-model:value="queryParams.relate_depart"
+            size="medium"
+            :options="relateDepartOptions"
+            clearable
+            class="w-120px"
+          />
         </n-form-item>
         <n-form-item label="企业类型">
-          <n-input v-model="queryParams.policyName" />
+          <n-select
+            v-model:value="entRef"
+            size="medium"
+            multiple
+            :options="entpScaleOptions"
+            clearable
+            class="w-120px"
+          />
+        </n-form-item>
+        <n-form-item label="申报类型">
+          <n-select
+            v-model:value="queryParams.declare_type"
+            size="medium"
+            :options="declareTypeOptions"
+            clearable
+            class="w-120px"
+          />
+        </n-form-item>
+        <n-form-item label="政策类型">
+          <n-select
+            v-model:value="queryParams.type"
+            size="medium"
+            :options="typeOptions"
+            clearable
+            class="w-120px"
+          />
         </n-form-item>
         <n-form-item>
           <div class="w-full flex gap-4">
-            <n-button type="info" size="medium" @click="">搜索</n-button>
-            <n-button type="default" size="medium" @click="">重置</n-button>
+            <n-button type="info" size="medium" @click="handleQuery"
+              >搜索</n-button
+            >
+            <n-button type="default" size="medium" @click="resetQuery"
+              >重置</n-button
+            >
             <n-button
               text
               type="info"
               size="medium"
               icon-placement="right"
               @click=""
+              v-if="false"
             >
               <span>展开</span>
               <template #icon>
@@ -47,7 +89,7 @@
       <!-- Table -->
       <div class="flex justify-between items-center mb-4">
         <h1 class="text-lg font-semibold">政策列表</h1>
-        <n-button type="info" size="large" @click="">
+        <n-button type="info" size="large" @click="handleCreate">
           <template #icon>
             <n-icon size="24">
               <i-mdi-plus></i-mdi-plus>
@@ -75,13 +117,36 @@
 
 <script setup lang="ts">
 import { deletePolicy, getPolicy } from '@/api/policy/policy';
-import { DataTableColumn, NButton, NPopconfirm, NSpace } from 'naive-ui';
+import { DataTableColumn, NButton, NPopconfirm, NSpace, NTag } from 'naive-ui';
+import {
+  levelOptions,
+  relateDepartOptions,
+  typeOptions,
+  declareTypeOptions,
+  entpScaleOptions
+} from './PolicyOptions';
+
+const router = useRouter();
 
 const queryParams = reactive({
-  policyName: '',
-  policyLevel: '',
-  department: '',
-  enterpriseType: ''
+  name: null,
+  level: null,
+  relate_depart: null,
+  entp_scale: '',
+  declare_type: null,
+  type: null
+});
+const entRef = computed({
+  get() {
+    if (queryParams.entp_scale) {
+      return queryParams.entp_scale.split(',').map((item) => Number(item));
+    } else {
+      return [];
+    }
+  },
+  set(v) {
+    queryParams.entp_scale = v.join(',');
+  }
 });
 
 // Table
@@ -118,7 +183,27 @@ const columns = ref<DataTableColumn[]>([
     title: '企业类型',
     key: 'entp_scale',
     render(row: any) {
-      return h('span', {}, row.entp_scale_map[row.entp_scale]);
+      const tagsIndex = row.entp_scale.split('');
+      const tags = tagsIndex.map((item: any) => {
+        return (
+          entpScaleOptions.value.find((tag: any) => tag.value === Number(item))
+            ?.label || '无该选项'
+        );
+      });
+      console.log(tags);
+      const tagsHtml = tags.map((item: any) => {
+        return h(
+          NTag,
+          {
+            type: 'primary',
+            size: 'small'
+          },
+          {
+            default: () => item
+          }
+        );
+      });
+      return h(NSpace, {}, { default: () => tagsHtml });
     }
   },
   {
@@ -155,7 +240,9 @@ const columns = ref<DataTableColumn[]>([
                 {
                   type: 'primary',
                   size: 'small',
-                  onClick: () => {}
+                  onClick: () => {
+                    editPolicy(row.uuid as string);
+                  }
                 },
                 { default: () => '编辑' }
               ),
@@ -165,6 +252,7 @@ const columns = ref<DataTableColumn[]>([
                   placement: 'bottom',
                   onPositiveClick: () => {
                     deletePolicy(row.uuid as string);
+                    handleQuery();
                   }
                 },
                 {
@@ -214,6 +302,30 @@ async function handlePageChange(page: number) {
 onMounted(async () => {
   await queryData(queryParams);
 });
+
+// Query
+async function handleQuery() {
+  await queryData(queryParams);
+}
+async function resetQuery() {
+  queryParams.name = null;
+  queryParams.level = null;
+  queryParams.relate_depart = null;
+  queryParams.entp_scale = '';
+  queryParams.declare_type = null;
+  queryParams.type = null;
+  await queryData(queryParams);
+}
+
+// Edit
+async function editPolicy(uuid: string) {
+  router.push({ name: 'PolicyManage_edit', params: { uuid } });
+}
+
+// create
+function handleCreate() {
+  router.push({ name: 'PolicyManage_add' });
+}
 </script>
 
 <style scoped></style>

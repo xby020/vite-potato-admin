@@ -68,6 +68,19 @@ const routes: Array<RouteRecordRaw> = [
               auth: true,
               icon: markRaw(FluentBookAdd24Filled)
             }
+          },
+          {
+            path: 'edit',
+            name: 'PolicyManage_edit',
+            component: () =>
+              import('@pages/dashboard/PolicyManage/PolicyAdd/PolicyEdit.vue'),
+            meta: {
+              sort: 2,
+              title: '修改政策',
+              hide: true,
+              auth: true,
+              icon: markRaw(FluentBookAdd24Filled)
+            }
           }
         ]
       },

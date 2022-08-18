@@ -8,8 +8,6 @@
           <n-grid :x-gap="32" :y-gap="5" :cols="3" class="h-48">
             <n-grid-item
               class="w-full h-full bg-light-50 rounded-md shadow-md transform transition-all duration-200 ease-in-out hover:(shadow-lg)"
-              v-for="item in 3"
-              :key="item"
             >
               <div
                 class="w-full h-full p-4 flex flex-col justify-center items-center gap-2"
@@ -20,11 +18,35 @@
                 </h1>
               </div>
             </n-grid-item>
+            <n-grid-item
+              class="w-full h-full bg-light-50 rounded-md shadow-md transform transition-all duration-200 ease-in-out hover:(shadow-lg)"
+            >
+              <div
+                class="w-full h-full p-4 flex flex-col justify-center items-center gap-2"
+              >
+                <h1 class="text-xl font-bold tracking-wider">政策解读数</h1>
+                <h1 class="font-number text-3xl font-semibold text-green-500">
+                  <n-number-animation :from="0" :to="105" />
+                </h1>
+              </div>
+            </n-grid-item>
+            <n-grid-item
+              class="w-full h-full bg-light-50 rounded-md shadow-md transform transition-all duration-200 ease-in-out hover:(shadow-lg)"
+            >
+              <div
+                class="w-full h-full p-4 flex flex-col justify-center items-center gap-2"
+              >
+                <h1 class="text-xl font-bold tracking-wider">企业数量</h1>
+                <h1 class="font-number text-3xl font-semibold text-green-500">
+                  <n-number-animation :from="0" :to="105" />
+                </h1>
+              </div>
+            </n-grid-item>
           </n-grid>
         </div>
 
         <!-- 政策查看人数 -->
-        <div class="w-full">
+        <div class="w-full" v-if="false">
           <n-grid :x-gap="32" :y-gap="5" :cols="2" class="h-120">
             <n-grid-item
               class="w-full h-full bg-light-50 rounded-md shadow-md transform transition-all duration-200 ease-in-out hover:(shadow-lg)"

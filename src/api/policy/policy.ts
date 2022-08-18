@@ -16,10 +16,11 @@ export function addPolicy(params: any) {
   });
 }
 
-export function updatePolicy(uuid: string) {
+export function updatePolicy(uuid: string, data: any) {
   return request({
     url: '/api/v1/manage/policy/manage/' + uuid,
-    method: 'put'
+    method: 'put',
+    data
   });
 }
 
