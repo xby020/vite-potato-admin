@@ -32,7 +32,7 @@
         >
           <!-- Title -->
           <div
-            class="w-full h-12 rounded-t-sm flex justify-between items-center cursor-pointer select-none text-light-600 transform transition-all duration-200 hover:(bg-slate-200 bg-opacity-80)"
+            class="w-full h-12 rounded-t-sm flex justify-between items-center cursor-pointer select-none text-light-600 transform transition-all duration-200 hover:(bg-zinc-600 bg-opacity-80)"
             :class="menuClass(record)"
             @click="clickSecondRoute(record, recordIndex)"
           >
@@ -71,7 +71,7 @@
           <!-- Children -->
           <transition @enter="onChildEnter" @leave="onChildLeave">
             <div
-              class="w-full bg-stone-200/50 shadow-in-sm shadow-stone-400/20"
+              class="w-full bg-stone-600 shadow-in-sm shadow-dark-600"
               v-if="
                 isExtend &&
                 showChildrenList[recordIndex] &&
@@ -81,10 +81,12 @@
             >
               <!-- Children Title -->
               <div
-                class="w-full h-12 pl-8 rounded-t-sm flex items-center gap-2 cursor-pointer select-none text-zinc-600 transform transition-all duration-200 hover:(bg-slate-200 bg-opacity-80)"
+                class="w-full h-12 pl-8 rounded-t-sm flex items-center gap-2 cursor-pointer select-none text-zinc-200 transform transition-all duration-200 hover:(bg-slate-600 bg-opacity-80)"
                 :class="childMenuClass(childRecord)"
-                @click="jumpTo(childRecord.name)"
-                v-for="(childRecord, childRecordIndex) in record.children"
+                @click="jumpTo(childRecord)"
+                v-for="(
+                  childRecord, childRecordIndex
+                ) in record.children.filter((child) => !child.meta?.hide)"
                 :key="childRecordIndex"
               >
                 <!-- icon -->
@@ -158,7 +160,7 @@ const menuClass = computed((record: RouteRecordRaw) => {
   return (record: RouteRecordRaw) => {
     const isCurrentMenu =
       record.name === currentMenu.value.name
-        ? '!text-blue-600 bg-blue-300 bg-opacity-20'
+        ? '!text-blue-400 bg-blue-400 bg-opacity-20'
         : '';
     const isExtendClass = isExtend.value
       ? 'justify-start px-4'
@@ -170,7 +172,7 @@ const childMenuClass = computed((record: RouteRecordRaw) => {
   return (record: RouteRecordRaw) => {
     const isCurrentMenu =
       record.name === route.name
-        ? '!text-blue-600 bg-blue-300 bg-opacity-20'
+        ? '!text-blue-400 bg-blue-400 bg-opacity-20'
         : '';
     const isExtendClass = isExtend.value
       ? 'justify-start px-4'
@@ -196,9 +198,10 @@ const currentMenu = computed(() => {
 
 // second route jump
 const router = useRouter();
-function jumpTo(name?: RouteRecordName) {
-  if (name) {
-    router.push({ name });
+function jumpTo(record?: RouteRecordRaw) {
+  // console.log(record);
+  if (record?.name) {
+    router.push({ name: record.name });
   }
 }
 

@@ -52,23 +52,17 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
           ws: true,
           rewrite: (path) => path.replace(new RegExp(`^/api/v1`), '')
         },
-        '/api/iot': {
-          target: env.VITE_IOT_URL,
+        '/upload': {
+          target: env.VITE_UPLOAD_URL,
           changeOrigin: true,
           ws: true,
-          rewrite: (path) => path.replace(new RegExp(`^/api/iot`), '')
+          rewrite: (path) => path.replace(new RegExp(`^/upload`), '')
         },
         '/media': {
           target: env.VITE_MEDIA_URL,
           changeOrigin: true,
           ws: true,
           rewrite: (path) => path.replace(new RegExp(`^/media`), '')
-        },
-        '/upload': {
-          target: env.VITE_UPLOAD_URL,
-          changeOrigin: true,
-          ws: true,
-          rewrite: (path) => path.replace(new RegExp(`^/upload`), '')
         }
       }
     }

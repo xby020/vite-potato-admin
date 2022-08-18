@@ -1,7 +1,9 @@
 <template>
   <div class="w-screen h-screen">
     <n-config-provider :locale="zhCN" :date-locale="dateZhCN">
-      <router-view></router-view>
+      <app-provider>
+        <router-view></router-view>
+      </app-provider>
     </n-config-provider>
   </div>
 </template>

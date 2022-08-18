@@ -35,24 +35,39 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'PolicyManage',
         name: 'PolicyManage',
+        redirect: 'PolicyManage/PolicyList',
         meta: {
           sort: 2,
           title: '政策管理',
           auth: true,
+          notPage: true,
           icon: markRaw(BiFileEarmarkMedicalFill)
         },
         children: [
           {
-            path: 'add',
-            name: 'PolicyManage_add',
+            path: 'PolicyManage_list',
+            name: 'PolicyManage_list',
+            component: () =>
+              import('@pages/dashboard/PolicyManage/PolicyManage.vue'),
             meta: {
               sort: 1,
+              title: '政策列表',
+              auth: true,
+              icon: markRaw(BiFileEarmarkMedicalFill)
+            }
+          },
+          {
+            path: 'add',
+            name: 'PolicyManage_add',
+            component: () =>
+              import('@pages/dashboard/PolicyManage/PolicyAdd/PolicyAdd.vue'),
+            meta: {
+              sort: 2,
               title: '新增政策',
+              hide: false,
               auth: true,
               icon: markRaw(FluentBookAdd24Filled)
-            },
-            component: () =>
-              import('@pages/dashboard/PolicyManage/PolicyManage.vue')
+            }
           }
         ]
       },
@@ -65,8 +80,52 @@ const routes: Array<RouteRecordRaw> = [
           auth: true,
           icon: markRaw(MdiFileSearch)
         },
-        component: () =>
-          import('@pages/dashboard/ExplainationManage/ExplainationManage.vue')
+        children: [
+          {
+            path: 'Explaination_list',
+            name: 'Explaination_list',
+            component: () =>
+              import(
+                '@pages/dashboard/ExplainationManage/ExplainationManage.vue'
+              ),
+            meta: {
+              sort: 1,
+              title: '政策解读列表',
+              auth: true,
+              icon: markRaw(BiFileEarmarkMedicalFill)
+            }
+          },
+          {
+            path: 'add',
+            name: 'Explaination_add',
+            component: () =>
+              import(
+                '@pages/dashboard/ExplainationManage/ExplainationAdd/ExplainationAdd.vue'
+              ),
+            meta: {
+              sort: 2,
+              title: '新增政策解读',
+              hide: false,
+              auth: true,
+              icon: markRaw(FluentBookAdd24Filled)
+            }
+          },
+          {
+            path: 'edit',
+            name: 'Explaination_edit',
+            component: () =>
+              import(
+                '@pages/dashboard/ExplainationManage/ExplainationAdd/ExplainationEdit.vue'
+              ),
+            meta: {
+              sort: 2,
+              title: '修改政策解读',
+              hide: true,
+              auth: true,
+              icon: markRaw(FluentBookAdd24Filled)
+            }
+          }
+        ]
       }
     ]
   }

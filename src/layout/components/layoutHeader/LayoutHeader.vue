@@ -18,7 +18,7 @@
           v-for="(routeRaw, index) in breadcrumb"
           :key="index"
           :clickable="routeRaw.components ? true : false"
-          @click="breadcrumbJump(routeRaw.name)"
+          @click="routeRaw.components ? breadcrumbJump(routeRaw.name) : null"
         >
           <n-icon :component="(routeRaw.meta.icon as Component)" />
           <span class="ml-1">{{ routeRaw.meta.title }}</span>

@@ -2,16 +2,20 @@
   <div class="w-full h-full flex justify-center items-center">
     <n-dropdown trigger="click" @select="handleSelect" :options="options">
       <!-- Click area -->
-      <div class="w-full h-full flex justify-center items-center gap-2 select-none cursor-pointer">
+      <div
+        class="w-full h-full flex justify-center items-center gap-2 select-none cursor-pointer"
+      >
         <!-- Avatar -->
-        <n-avatar size="large" :src="info.avatar" round></n-avatar>
+        <n-avatar size="large" :src="info.img" round>
+          <n-icon size="24" v-if="!info.img">
+            <i-mdi-account></i-mdi-account>
+          </n-icon>
+        </n-avatar>
 
         <!-- Name -->
-        <h1 class="tracking-wide">{{ info.nick_name }}</h1>
+        <h1 class="tracking-wide">{{ info.username }}</h1>
       </div>
     </n-dropdown>
-
-
   </div>
 </template>
 
@@ -19,28 +23,26 @@
 import { useUserStore } from '@/store/modules/user';
 import { NIcon } from 'naive-ui';
 import { Component } from 'vue';
-import MdiLogout from '~icons/mdi/Logout'
+import MdiLogout from '~icons/mdi/Logout';
 
 const userStore = useUserStore();
 
 const { info } = storeToRefs(userStore);
 
-
-
 // dropdown menu
 const renderIcon = (icon: Component) => {
   return () => {
-    return h(icon)
-  }
-}
+    return h(icon);
+  };
+};
 
 const options = ref([
   {
     label: '注销',
     key: 'logout',
-    icon: renderIcon(MdiLogout),
+    icon: renderIcon(MdiLogout)
   }
-])
+]);
 
 const router = useRouter();
 function handleSelect(key: string) {
@@ -51,5 +53,4 @@ function handleSelect(key: string) {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

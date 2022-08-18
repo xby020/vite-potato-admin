@@ -7,88 +7,39 @@ export interface LoginParams {
 
 export interface LoginUserInfo {
   /**
-   * 用户头像，用户头像
+   * 注册事件
    */
-  avatar?: string;
+  add_datetime: string;
   /**
-   * 用户真实名称，用户真实名称
+   * 头像
    */
-  name: string;
+  img: string;
   /**
-   * 用户昵称，用户昵称
+   * 最后一次登录时间
    */
-  nick_name?: string;
+  last_time: string;
   /**
-   * 用户联系方式，用户联系方式
+   * 手机
    */
-  phone?: string;
+  mobile: string;
   /**
-   * 用户角色列表，用户角色列表
+   * 角色
    */
-  role: Role[];
+  role: number;
   /**
-   * Token
+   * 角色字典
+   */
+  role_map: { [key: string]: any };
+  /**
+   * token
    */
   token: string;
   /**
-   * Token到期时间
+   * 用户名称
    */
-  token_expire_time?: string;
+  username: string;
   /**
-   * 用户ID，用户ID
-   */
-  uuid: string;
-}
-
-/**
- * Role
- */
-export interface Role {
-  /**
-   * 角色名称
-   */
-  name: string;
-  /**
-   * 角色权限
-   */
-  permissions: Permission[];
-  /**
-   * 角色UUID
-   */
-  uuid: string;
-}
-
-/**
- * 权限名称
- *
- * Permission
- */
-export interface Permission {
-  /**
-   * 权限名称
-   */
-  name: string;
-  /**
-   * 权限路径
-   */
-  path: string;
-  /**
-   * 权限uuid
-   */
-  uuid: string;
-}
-
-export interface Role {
-  /**
-   * 角色名称
-   */
-  name: string;
-  /**
-   * 角色权限
-   */
-  permissions: Permission[];
-  /**
-   * 角色UUID
+   * 用户UUID
    */
   uuid: string;
 }

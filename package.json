@@ -11,6 +11,7 @@
   "dependencies": {
     "@types/video.js": "^7.3.44",
     "@vueuse/head": "^0.7.9",
+    "@wangeditor/editor-for-vue": "^5.1.12",
     "axios": "^0.27.2",
     "dayjs": "^1.11.4",
     "echarts": "^5.3.3",

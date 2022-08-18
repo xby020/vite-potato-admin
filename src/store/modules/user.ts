@@ -2,12 +2,7 @@ import { defineStore } from 'pinia';
 import { dbSet, dbGet } from '@/utils/db';
 import cookies from '@/utils/cookies';
 import Dayjs from 'dayjs';
-import {
-  login,
-  LoginParams,
-  LoginUserInfo,
-  Permission
-} from '@/api/user/login';
+import { login, LoginParams, LoginUserInfo } from '@/api/user/login';
 
 export type User = {
   info: LoginUserInfo;
@@ -18,26 +13,9 @@ const user = dbGet<LoginUserInfo>({ path: 'user', user: true });
 export const useUserStore = defineStore({
   id: 'user',
   state: (): User => ({
-    info: {
-      name: user.name,
-      avatar: user.avatar,
-      nick_name: user.nick_name,
-      phone: user.phone,
-      role: user.role,
-      token: user.token,
-      token_expire_time: user.token_expire_time,
-      uuid: user.uuid
-    }
+    info: user
   }),
-  getters: {
-    permissions(state) {
-      let permissions: Permission[] = [];
-      state.info.role?.forEach((item) => {
-        permissions = [...permissions, ...item.permissions];
-      });
-      return permissions;
-    }
-  },
+  getters: {},
   actions: {
     /**
      * @description 设置用户信息
@@ -59,9 +37,7 @@ export const useUserStore = defineStore({
     async handleLogin(params: LoginParams) {
       const res = await login(params);
       // set cookies
-      cookies.set('token', res.token, {
-        expires: Dayjs(res.token_expire_time).toDate()
-      });
+      cookies.set('token', res.token, {});
       cookies.set('uuid', res.uuid);
       // setting user info store
       this.setUserInfo(res);
@@ -72,16 +48,7 @@ export const useUserStore = defineStore({
      *
      */
     logout() {
-      this.info = {
-        name: '',
-        avatar: '',
-        nick_name: '',
-        phone: '',
-        role: [],
-        token: '',
-        token_expire_time: '',
-        uuid: ''
-      };
+      this.info = {} as LoginUserInfo;
       dbSet({ path: 'user', user: true, value: this.info });
     }
   }

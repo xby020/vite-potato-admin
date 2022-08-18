@@ -18,21 +18,20 @@ export const useAsyncRoute = defineStore({
   actions: {
     generateAsyncRoute() {
       const userStore = useUserStore();
-      const permissions = userStore.permissions;
 
       const { info } = userStore;
       const { role } = info;
 
-      const isAdmin = role.find(({ name }) => name === 'admin');
+      console.log(role);
+      const isAdmin = role === 1 || 2;
 
       const routeFilter = (route: RouteRecordRaw) => {
         const { meta } = route;
         if (!meta || !meta.auth) {
           return true;
         }
-        const hasPermission =
-          isAdmin || permissions.find((item) => item.path === route.name);
-        return !!hasPermission;
+        const hasPermission = isAdmin;
+        return hasPermission;
       };
 
       const routeListFliter = (routeList: RouteRecordRaw[]) => {

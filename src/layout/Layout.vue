@@ -1,33 +1,31 @@
 <template>
   <div class="w-screen h-screen overflow-hidden bg-zinc-200">
-    <app-provider>
-      <div
-        class="w-full h-full flex flex-row justify-start items-center overflow-hidden"
-      >
-        <!-- Siderbar -->
-        <div class="h-full">
-          <layout-sidebar></layout-sidebar>
+    <div
+      class="w-full h-full flex flex-row justify-start items-center overflow-hidden"
+    >
+      <!-- Siderbar -->
+      <div class="h-full">
+        <layout-sidebar></layout-sidebar>
+      </div>
+
+      <!-- Main content -->
+      <div class="flex-auto h-full flex flex-col gap-2">
+        <div class="w-full h-16">
+          <!-- header -->
+          <layout-header></layout-header>
         </div>
 
-        <!-- Main content -->
-        <div class="flex-auto h-full flex flex-col gap-2">
-          <div class="w-full h-16">
-            <!-- header -->
-            <layout-header></layout-header>
-          </div>
-
-          <!-- tabsView -->
-          <!-- <div class="w-full h-12 px-2">
+        <!-- tabsView -->
+        <!-- <div class="w-full h-12 px-2">
             <layout-tab-view></layout-tab-view>
           </div> -->
 
-          <!-- content -->
-          <div class="w-full flex-auto px-2">
-            <layout-main> </layout-main>
-          </div>
+        <!-- content -->
+        <div class="w-full flex-auto px-2">
+          <layout-main> </layout-main>
         </div>
       </div>
-    </app-provider>
+    </div>
   </div>
 </template>
 

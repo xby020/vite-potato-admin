@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { AxiosRequestConfig, AxiosInstance } from 'axios';
 import { merge, get } from 'lodash';
+import cookies from '@/utils/cookies';
 
 interface CustomResponse<T = any> {
   code: number;
@@ -62,10 +63,12 @@ function createService<T = any>(): AxiosInstance {
  * @param {Object} service axios 实例
  */
 function createRequest(service: AxiosInstance) {
+  const token = cookies.get('token');
   return async function <T = any>(config: AxiosRequestConfig): Promise<T> {
     const configDefault = {
       headers: {
-        'Content-Type': get(config, 'headers.Content-Type', 'application/json')
+        'Content-Type': get(config, 'headers.Content-Type', 'application/json'),
+        Authorization: token
       },
       // baseURL: import.meta.env.VITE_API_URL,
       timeout: 5000,
