@@ -63,19 +63,23 @@ function createService<T = any>(): AxiosInstance {
  * @param {Object} service axios 实例
  */
 function createRequest(service: AxiosInstance) {
-  const token = cookies.get('token');
   return async function <T = any>(config: AxiosRequestConfig): Promise<T> {
+    const token = cookies.get('token');
     const configDefault = {
       headers: {
-        'Content-Type': get(config, 'headers.Content-Type', 'application/json'),
-        Authorization: token
+        'Content-Type': get(config, 'headers.Content-Type', 'application/json')
       },
       // baseURL: import.meta.env.VITE_API_URL,
       timeout: 5000,
       data: {}
     };
 
-    const option: AxiosRequestConfig = merge(configDefault, config);
+    const option: AxiosRequestConfig = merge(configDefault, config, {
+      headers: {
+        Authorization: token
+      }
+    });
+    console.log(option);
     try {
       const response = await service(option);
       const data: T = response.data;

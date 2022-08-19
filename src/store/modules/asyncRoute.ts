@@ -22,7 +22,6 @@ export const useAsyncRoute = defineStore({
       const { info } = userStore;
       const { role } = info;
 
-      console.log(role);
       const isAdmin = role === 1 || 2;
 
       const routeFilter = (route: RouteRecordRaw) => {

@@ -37,7 +37,7 @@ export const useUserStore = defineStore({
     async handleLogin(params: LoginParams) {
       const res = await login(params);
       // set cookies
-      cookies.set('token', res.token, {});
+      cookies.set('token', res.token);
       cookies.set('uuid', res.uuid);
       // setting user info store
       this.setUserInfo(res);
