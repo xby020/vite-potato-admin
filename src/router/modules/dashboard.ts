@@ -5,6 +5,10 @@ import MdiHome from '~icons/mdi/home';
 import BiFileEarmarkMedicalFill from '~icons/bi/file-earmark-medical-fill';
 import MdiFileSearch from '~icons/mdi/file-search';
 import FluentBookAdd24Filled from '~icons/fluent/book-add-24-filled';
+import FluentMoney16Filled from '~icons/fluent/money-16-filled';
+import FluentMoneyCalculator20Filled from '~icons/fluent/money-calculator-20-filled';
+import FluentMoneyHand24Filled from '~icons/fluent/money-hand-24-filled';
+import FluentMoneySettings20Filled from '~icons/fluent/money-settings-20-filled';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -136,6 +140,58 @@ const routes: Array<RouteRecordRaw> = [
               hide: true,
               auth: true,
               icon: markRaw(FluentBookAdd24Filled)
+            }
+          }
+        ]
+      },
+      {
+        path: 'PolicyFunds',
+        name: 'PolicyFunds',
+        meta: {
+          sort: 3,
+          title: '政策兑换资金管理',
+          hide: false,
+          auth: true,
+          icon: markRaw(FluentMoney16Filled)
+        },
+        children: [
+          {
+            path: 'PolicyFunds_list',
+            name: 'PolicyFunds_list',
+            component: () =>
+              import('@pages/dashboard/PolicyFunds/PolicyFunds.vue'),
+            meta: {
+              sort: 1,
+              title: '政策兑换资金列表',
+              hide: false,
+              auth: true,
+              icon: markRaw(FluentMoneyCalculator20Filled)
+            }
+          },
+          {
+            path: 'add',
+            name: 'PolicyFunds_add',
+            component: () =>
+              import('@pages/dashboard/PolicyFunds/PolicyFundsAdd.vue'),
+            meta: {
+              sort: 2,
+              title: '新增政策兑换资金',
+              hide: false,
+              auth: true,
+              icon: markRaw(FluentMoneyHand24Filled)
+            }
+          },
+          {
+            path: 'edit',
+            name: 'PolicyFunds_edit',
+            component: () =>
+              import('@pages/dashboard/PolicyFunds/PolicyFundsEdit.vue'),
+            meta: {
+              sort: 3,
+              title: '修改政策兑换资金',
+              hide: true,
+              auth: true,
+              icon: markRaw(FluentMoneySettings20Filled)
             }
           }
         ]

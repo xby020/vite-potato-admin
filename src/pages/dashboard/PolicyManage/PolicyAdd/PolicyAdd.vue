@@ -102,9 +102,8 @@
 
           <n-form-item-gi :span="1" label="企业规模" path="entp_scale">
             <n-select
-              v-model:value="entRef"
+              v-model:value="formData.entp_scale"
               size="medium"
-              multiple
               :options="entpScaleOptions"
               clearable
             />
@@ -139,7 +138,7 @@
             <n-upload
               action="/upload"
               list-type="text"
-              :max="1"
+              multiple
               :headers="{
                 Authorization: cookies.get('token')
               }"
@@ -169,7 +168,7 @@
             <n-upload
               action="/upload"
               list-type="text"
-              :max="1"
+              multiple
               :headers="{
                 Authorization: cookies.get('token')
               }"
@@ -226,10 +225,6 @@ const formData = reactive({
   source_uuid: '',
   label_uuid_list: [] // 标签uuid列表
 });
-const entRef = ref<any[]>([]);
-watch(entRef, (val) => {
-  formData.entp_scale = entRef.value.join('') as any;
-});
 const formRules = ref<FormRules>();
 
 const labelOptions = ref<any[]>([]);
@@ -264,10 +259,7 @@ const explainationOptions = ref<any[]>([]);
 onMounted(async () => {
   const expList = await getExplaination();
   console.log(expList);
-  const expListFilter = expList.items.filter(
-    (item: any) => !item.relate_policy_uuid
-  );
-  explainationOptions.value = expListFilter.map((exp: any) => {
+  explainationOptions.value = expList.items.map((exp: any) => {
     return {
       label: exp.name,
       value: exp.uuid
@@ -309,10 +301,8 @@ async function submit() {
   submitLoading.value = true;
   try {
     console.log(formData);
-    const res = await addPolicy(formData);
-    console.log(res);
-    window.$message.success('添加成功');
-    router.push({ name: 'PolicyManage_list' });
+    // const res = await addPolicy(formData);
+    // console.log(res);
   } catch (err) {
     console.log(err);
   } finally {
