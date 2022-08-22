@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-full pb-2 overflow-hidden">
+  <div class="relative w-full h-full">
     <router-view v-slot="{ Component, route }">
       <transition @enter="onEnter" @leave="onLeave" :css="false" appear>
         <component class="absolute" :is="Component" :key="route.name" />

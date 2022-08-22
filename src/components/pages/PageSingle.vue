@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full h-full flex flex-col bg-light-50 dark:bg-dark-50">
+  <div
+    class="w-full h-full flex flex-col bg-light-50 rounded-md dark:bg-dark-50"
+  >
     <!-- Header -->
     <div class="w-full h-16 flex justify-between items-center">
       <!-- title -->
@@ -9,13 +11,27 @@
           {{ title }}
         </h1>
       </div>
+
+      <!-- action -->
+      <div class="flex items-center h-full">
+        <slot name="action"></slot>
+      </div>
     </div>
+
+    <!-- divider -->
+    <div class="w-full h-1px bg-gray-200" v-if="divider?.header"></div>
+
+    <!-- content -->
+    <div class="w-full flex-auto"></div>
   </div>
 </template>
 
 <script setup lang="ts">
 interface Props {
   title: string;
+  divider?: {
+    header?: boolean;
+  };
 }
 
 const props = defineProps<Props>();

@@ -22,7 +22,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       // Html plugin
       createHtmlPlugin({
         minify: true,
-        entry: 'src/main.ts',
+        entry: '/src/main.ts',
         inject: {
           data: {
             title: env.VITE_APP_TITLE,

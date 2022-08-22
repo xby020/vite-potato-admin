@@ -10,18 +10,16 @@
 
       <!-- Main content -->
       <div class="flex-auto h-full flex flex-col gap-2">
+        <!-- header -->
         <div class="w-full h-16">
-          <!-- header -->
           <layout-header></layout-header>
         </div>
 
         <!-- tabsView -->
-        <!-- <div class="w-full h-12 px-2">
-            <layout-tab-view></layout-tab-view>
-          </div> -->
+        <div class="w-full h-12 bg-red-200"></div>
 
         <!-- content -->
-        <div class="w-full flex-auto px-2">
+        <div class="w-full flex-auto p-2 overflow-hidden">
           <layout-main> </layout-main>
         </div>
       </div>
