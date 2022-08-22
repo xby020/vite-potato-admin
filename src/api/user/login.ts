@@ -7,46 +7,29 @@ export interface LoginParams {
 
 export interface LoginUserInfo {
   /**
-   * 注册事件
-   */
-  add_datetime: string;
-  /**
-   * 头像
-   */
-  img: string;
-  /**
-   * 最后一次登录时间
-   */
-  last_time: string;
-  /**
-   * 手机
-   */
-  mobile: string;
-  /**
-   * 角色
-   */
-  role: number;
-  /**
-   * 角色字典
-   */
-  role_map: { [key: string]: any };
-  /**
    * token
    */
   token: string;
   /**
    * 用户名称
    */
-  username: string;
+  name: string;
   /**
    * 用户UUID
    */
   uuid: string;
+  /**
+   * 用户头像
+   * @type {string}
+   * @memberof LoginUserInfo
+   * @description 用户头像
+   */
+  avatar: string;
 }
 
 export function login(params: LoginParams) {
-  return request<any>({
-    url: '/api/v1/manage/user/login',
+  return request<LoginUserInfo>({
+    url: '/api/v1/login',
     method: 'post',
     data: params
   });

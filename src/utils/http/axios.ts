@@ -79,7 +79,6 @@ function createRequest(service: AxiosInstance) {
         Authorization: token
       }
     });
-    console.log(option);
     try {
       const response = await service(option);
       const data: T = response.data;

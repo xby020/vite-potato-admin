@@ -1,6 +1,11 @@
 {
   "globals": {
     "EffectScope": true,
+    "IconFaTable": true,
+    "IconFluentDataBarVertical20Filled": true,
+    "IconMdiAccount": true,
+    "IconMdiAlarm": true,
+    "IconMdiViewDashboard": true,
     "acceptHMRUpdate": true,
     "asyncComputed": true,
     "autoResetRef": true,

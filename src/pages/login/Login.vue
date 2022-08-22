@@ -19,10 +19,10 @@
     </div>
     <!-- login container -->
     <div
-      class="max-w-260 min-w-100 h-full flex flex-col justify-start items-center"
+      class="relative z-999 max-w-260 min-w-100 h-full pt-24 flex gap-12 flex-col justify-start items-center"
     >
       <!-- Title -->
-      <div class="my-24 flex justify-center items-center gap-6">
+      <div class="flex justify-center items-center gap-6">
         <!-- logo -->
         <div class="flex">
           <n-image
@@ -36,6 +36,10 @@
         <div class="text-4xl text-white font-bold tracking-widest">
           <h1>{{ appTitle }}</h1>
         </div>
+      </div>
+      <!-- subtitle -->
+      <div class="flex justify-center items-center">
+        <h1 class="text-lg text-gray-400">Vite 中后台模板</h1>
       </div>
       <!-- login form -->
       <n-card size="huge" class="hover:(shadow-md shadow-emerald-500)">
@@ -129,7 +133,7 @@ async function submit() {
           }
         }
       } catch (e) {
-        window.$message.error('登录失败');
+        console.error(e);
       } finally {
         loginLoading.value = false;
       }

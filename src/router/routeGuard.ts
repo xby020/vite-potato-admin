@@ -4,7 +4,6 @@ import { useAsyncRoute } from '@/store/modules/asyncRoute';
 import { Recordable } from 'vite-plugin-mock';
 import { Router } from 'vue-router';
 import { ErrorPageRoute } from './constantRoutes';
-import { useHead } from '@vueuse/head';
 
 export function createRouterGuards(router: Router) {
   const userStore = useUserStore();

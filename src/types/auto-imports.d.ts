@@ -2,6 +2,11 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const IconFaTable: typeof import('~icons/fa/table')['default']
+  const IconFluentDataBarVertical20Filled: typeof import('~icons/fluent/data-bar-vertical20-filled')['default']
+  const IconMdiAccount: typeof import('~icons/mdi/account')['default']
+  const IconMdiAlarm: typeof import('~icons/mdi/alarm')['default']
+  const IconMdiViewDashboard: typeof import('~icons/mdi/view-dashboard')['default']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']

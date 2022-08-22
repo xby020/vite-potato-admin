@@ -1,5 +1,5 @@
 <template>
-  <div>GridManage</div>
+  <div>This is Dashboard Table.</div>
 </template>
 
 <script setup lang="ts"></script>

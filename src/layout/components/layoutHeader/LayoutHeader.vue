@@ -33,6 +33,11 @@
         <LayoutHeaderTabs />
       </div>
 
+      <!-- Control -->
+      <div class="h-full mx-2">
+        <LayoutHeaderControl />
+      </div>
+
       <!-- header -->
       <div class="h-full ml-8">
         <LayoutHeaderUser />
@@ -44,6 +49,7 @@
 <script setup lang="ts">
 import LayoutHeaderTabs from './components/LayoutHeaderTabs.vue';
 import LayoutHeaderUser from './components/LayoutHeaderUser.vue';
+import LayoutHeaderControl from './components/LayoutHeaderControl.vue';
 import { useSystemStore } from '@/store/modules/system';
 import type { Component } from 'vue';
 import { RouteRecordName } from 'vue-router';

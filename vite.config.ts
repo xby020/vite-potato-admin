@@ -8,6 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import { UserConfigExport, ConfigEnv, loadEnv } from 'vite';
 import { configMockPlugin } from './src/utils/mock';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
@@ -17,12 +18,30 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       WindiCSS(),
+
+      // Html plugin
+      createHtmlPlugin({
+        minify: true,
+        entry: 'src/main.ts',
+        inject: {
+          data: {
+            title: env.VITE_APP_TITLE,
+            version: env.VITE_APP_VERSION
+          }
+        }
+      }),
+
+      // auto import components in templates
       Components({
         dts: 'src/types/components.d.ts',
         dirs: ['src/components'],
         resolvers: [IconsResolver(), NaiveUiResolver()]
       }),
+
+      // auto import icons
       Icons({ compiler: 'vue3' }),
+
+      // auto import api in scripts
       AutoImport({
         dts: 'src/types/auto-imports.d.ts',
         eslintrc: {
@@ -34,8 +53,15 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
           'vue-router',
           'pinia',
           '@vueuse/core'
+        ],
+        resolvers: [
+          IconsResolver({
+            prefix: 'icon'
+          })
         ]
       }),
+
+      // mock plugin
       configMockPlugin(env)
     ],
     resolve: {

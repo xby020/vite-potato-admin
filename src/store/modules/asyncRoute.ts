@@ -20,16 +20,18 @@ export const useAsyncRoute = defineStore({
       const userStore = useUserStore();
 
       const { info } = userStore;
-      const { role } = info;
 
-      const isAdmin = role === 1 || 2;
+      // 判断是否具有全局管理员权限，如果有，则不需要进行权限判断
+      const isAdmin = () => true;
 
       const routeFilter = (route: RouteRecordRaw) => {
         const { meta } = route;
+        // 路由不需要权限验证
         if (!meta || !meta.auth) {
           return true;
         }
-        const hasPermission = isAdmin;
+        // 权限验证
+        const hasPermission = isAdmin();
         return hasPermission;
       };
 
