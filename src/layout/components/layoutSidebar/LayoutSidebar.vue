@@ -1,7 +1,7 @@
 <template>
   <div
     ref="sidebar"
-    class="h-full bg-dark-400 text-light-50 p-2 flex flex-col justify-start items-center transition-all duration-400 ease-in-out"
+    class="h-full bg-[#1F4690] dark:bg-[#293462] text-light-50 p-2 flex flex-col justify-start items-center transition-all duration-400 ease-in-out"
     :class="isExtend ? 'w-72' : 'w-18'"
   >
     <!-- Logo -->

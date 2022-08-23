@@ -1,13 +1,15 @@
 <template>
   <div
-    class="w-full h-full flex flex-col bg-light-50 rounded-md dark:bg-dark-50"
+    class="w-full h-full flex flex-col bg-light-50 dark:(bg-zinc-800 text-light-50) rounded-md"
   >
     <!-- Header -->
     <div class="w-full h-16 flex justify-between items-center">
       <!-- title -->
-      <div class="flex items-center gap-2">
-        <n-icon size="24"> </n-icon>
-        <h1 class="text-xl font-bold tracking-wider text-dark-400">
+      <div class="flex items-center gap-2 mx-4">
+        <n-icon size="24">
+          <component :is="route.meta.icon"></component>
+        </n-icon>
+        <h1 class="text-xl font-bold tracking-wider">
           {{ title }}
         </h1>
       </div>
@@ -35,6 +37,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const route = useRoute();
 </script>
 
 <style scoped></style>

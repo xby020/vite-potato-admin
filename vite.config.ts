@@ -14,6 +14,7 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 export default ({ mode }: ConfigEnv): UserConfigExport => {
   const root = process.cwd();
   const env = loadEnv(mode, root);
+
   return {
     plugins: [
       vue(),
@@ -71,6 +72,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       }
     },
     server: {
+      port: Number(env.VITE_PORT) || 14514,
       proxy: {
         '/api/v1': {
           target: env.VITE_API_URL,

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full flex justify-between items-center bg-light-50 px-4 shadow-sm shadow-zinc-500/20"
+    class="w-full h-full flex justify-between items-center bg-light-50 dark:bg-[#293462] px-4 shadow-sm shadow-zinc-500/20"
   >
     <!-- left -->
     <div class="h-full flex items-center">

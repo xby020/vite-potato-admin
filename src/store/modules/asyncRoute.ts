@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { RouteRecordRaw } from 'vue-router';
 import { asyncRouteList } from '@/router';
 import { useUserStore } from './user';
+import { reject } from 'lodash';
 
 export interface AsyncRoute {
   accessRoutes: RouteRecordRaw[];
@@ -16,6 +17,23 @@ export const useAsyncRoute = defineStore({
   }),
   getters: {},
   actions: {
+    async waitRoutesReady() {
+      return new Promise<void>((resolve) => {
+        let timer = 0;
+        let timeout = 2000;
+        const clock = setInterval(() => {
+          timer += 100;
+          if (this.isAdded) {
+            clearInterval(clock);
+            resolve();
+          }
+          if (timer >= timeout) {
+            clearInterval(clock);
+            reject('路由加载超时');
+          }
+        }, 100);
+      });
+    },
     generateAsyncRoute() {
       const userStore = useUserStore();
 

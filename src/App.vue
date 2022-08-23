@@ -1,6 +1,11 @@
 <template>
   <div class="w-screen h-screen">
-    <n-config-provider :locale="zhCN" :date-locale="dateZhCN">
+    <n-config-provider
+      :locale="zhCN"
+      :date-locale="dateZhCN"
+      :theme="systemTheme"
+      :theme-overrides="themeOverrides"
+    >
       <app-provider>
         <router-view></router-view>
       </app-provider>
@@ -10,12 +15,26 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
-import { zhCN, dateZhCN } from 'naive-ui';
+import {
+  zhCN,
+  dateZhCN,
+  GlobalThemeOverrides,
+  darkTheme,
+  useOsTheme
+} from 'naive-ui';
+import { useSystemStore } from '@/store/modules/system';
+
+// logout app version
+console.log(
+  `%c🥔app version: ${import.meta.env.VITE_APP_VERSION}`,
+  'color: #35f0ec; font-size: 18px;background:#3f3f3f;border-radius:3px;text-align:center;padding:5px;'
+);
 
 // set Icon
 const iconPath = ref('/icon/logo.svg');
 useFavicon(iconPath);
 
+// set title
 const route = useRoute();
 const title = import.meta.env.VITE_APP_TITLE;
 useHead({
@@ -23,6 +42,60 @@ useHead({
     return `${route.meta.title || ''} - ${title}`;
   })
 });
+
+// Naive ui config
+const themeOverrides: GlobalThemeOverrides = {
+  common: {
+    primaryColor: '#0096FFFF',
+    primaryColorHover: '#009DFFFF',
+    primaryColorPressed: '#0077FFFF',
+    primaryColorSuppl: '#004CFFFF'
+  }
+};
+
+// System Settings
+const systemTheme = ref();
+const systemStore = useSystemStore();
+const { theme } = storeToRefs(systemStore);
+const setWindiDarkTheme = (isDark: boolean) => {
+  if (isDark) {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.remove('dark');
+  }
+};
+watch(
+  theme,
+  () => {
+    switch (theme.value) {
+      case 'auto':
+        const osTheme = useOsTheme();
+        if (osTheme.value === 'dark') {
+          systemTheme.value = darkTheme;
+          setWindiDarkTheme(true);
+        } else {
+          systemTheme.value = null;
+          setWindiDarkTheme(false);
+        }
+        break;
+      case 'dark':
+        systemTheme.value = darkTheme;
+        setWindiDarkTheme(true);
+        break;
+      case 'light':
+        systemTheme.value = null;
+        setWindiDarkTheme(false);
+        break;
+      default:
+        systemTheme.value = null;
+        setWindiDarkTheme(false);
+        break;
+    }
+  },
+  {
+    immediate: true
+  }
+);
 </script>
 
 <style scoped>
