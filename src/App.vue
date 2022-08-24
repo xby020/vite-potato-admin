@@ -56,11 +56,13 @@ const themeOverrides: GlobalThemeOverrides = {
 // System Settings
 const systemTheme = ref();
 const systemStore = useSystemStore();
-const { theme } = storeToRefs(systemStore);
-const setWindiDarkTheme = (isDark: boolean) => {
-  if (isDark) {
+const { theme, isDark } = storeToRefs(systemStore);
+const setDarkTheme = (dark: boolean) => {
+  if (dark) {
+    isDark.value = true;
     document.body.classList.add('dark');
   } else {
+    isDark.value = false;
     document.body.classList.remove('dark');
   }
 };
@@ -72,23 +74,23 @@ watch(
         const osTheme = useOsTheme();
         if (osTheme.value === 'dark') {
           systemTheme.value = darkTheme;
-          setWindiDarkTheme(true);
+          setDarkTheme(true);
         } else {
           systemTheme.value = null;
-          setWindiDarkTheme(false);
+          setDarkTheme(false);
         }
         break;
       case 'dark':
         systemTheme.value = darkTheme;
-        setWindiDarkTheme(true);
+        setDarkTheme(true);
         break;
       case 'light':
         systemTheme.value = null;
-        setWindiDarkTheme(false);
+        setDarkTheme(false);
         break;
       default:
         systemTheme.value = null;
-        setWindiDarkTheme(false);
+        setDarkTheme(false);
         break;
     }
   },

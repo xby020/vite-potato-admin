@@ -2,8 +2,9 @@ import { PageEnum } from '@/enums/pageEnum';
 import { useUserStore } from '@/store/modules/user';
 import { useAsyncRoute } from '@/store/modules/asyncRoute';
 import { Recordable } from 'vite-plugin-mock';
-import { Router } from 'vue-router';
+import { Router, RouteRecordRaw } from 'vue-router';
 import { ErrorPageRoute } from './constantRoutes';
+import { useTabsStore } from '@/store/modules/tabs';
 
 export function createRouterGuards(router: Router) {
   const userStore = useUserStore();
@@ -69,6 +70,14 @@ export function createRouterGuards(router: Router) {
   });
 
   router.afterEach((to, from) => {
+    const tabsStore = useTabsStore();
+    const tab = {
+      path: to.fullPath,
+      name: to.name || '',
+      meta: to.meta
+    };
+    tabsStore.addTab(tab);
+    tabsStore.currentTab = tab;
     // Loading
     const Loading = window['$loading'] || null;
     Loading && Loading.finish();

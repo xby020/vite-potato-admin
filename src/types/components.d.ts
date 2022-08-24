@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AppProvider: typeof import('./../components/app/AppProvider.vue')['default']
     DialogContent: typeof import('./../components/app/DialogContent.vue')['default']
     IMdiAccount: typeof import('~icons/mdi/account')['default']
+    IMdiClose: typeof import('~icons/mdi/close')['default']
     IMdiKeyboardArrowDown: typeof import('~icons/mdi/keyboard-arrow-down')['default']
     IMdiKeyboardArrowUp: typeof import('~icons/mdi/keyboard-arrow-up')['default']
     IMdiMenu: typeof import('~icons/mdi/menu')['default']

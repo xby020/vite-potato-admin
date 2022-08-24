@@ -12,7 +12,6 @@ export interface SystemSettings {
   isExtend: boolean;
   theme: 'light' | 'dark' | 'auto';
   isDark: boolean;
-  tabs: RouteRecordRaw[];
 }
 
 export interface SystemStore extends SystemSettings {}
@@ -22,15 +21,9 @@ export const useSystemStore = defineStore({
   state: (): SystemStore => ({
     isExtend: dbSystemSettings.isExtend || true,
     theme: dbSystemSettings.theme || 'auto',
-    isDark: false,
-    tabs: []
+    isDark: false
   }),
-  getters: {
-    tagList: (state) => {
-      const asyncRoutes = useAsyncRoute();
-      const solidTab = asyncRoutes.accessRoutes.find;
-    }
-  },
+  getters: {},
   actions: {
     toggleExtend() {
       this.isExtend = !this.isExtend;

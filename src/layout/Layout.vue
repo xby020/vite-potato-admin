@@ -16,7 +16,9 @@
         </div>
 
         <!-- tabsView -->
-        <div class="w-full h-12 bg-red-200"></div>
+        <div class="w-full h-12">
+          <layout-tab-view></layout-tab-view>
+        </div>
 
         <!-- content -->
         <div class="w-full flex-auto p-2 overflow-hidden">
