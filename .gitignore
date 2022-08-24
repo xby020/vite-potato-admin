@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 
 # Vite unplugun auto generated files
-types/auto-imports.d.ts
-types/components.d.ts
+src/types/auto-imports.d.ts
+src/types/components.d.ts
 .eslintrc-auto-import.json
