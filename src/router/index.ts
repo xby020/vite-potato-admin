@@ -31,7 +31,8 @@ const constantRouteList: RouteRecordRaw[] = [
     component: () => import('@pages/login/Login.vue'),
     meta: {
       title: '登录',
-      noAuth: true
+      noAuth: true,
+      hide: true
     }
   },
   {

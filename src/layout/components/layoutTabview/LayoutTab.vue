@@ -6,10 +6,10 @@
     @click.middle="handleTabClose"
   >
     <!-- Close zone -->
-    <div class="absolute z-1 right-0 h-34px w-4 overflow-hidden">
+    <div class="absolute z-1 right-0 h-34px w-4 overflow-hidden cursor-pointer">
       <div
         v-if="!static"
-        class="w-full h-full flex justify-center items-center text-light-50 bg-dark-900/30 transition-all transform duration-200 ease-in-out"
+        class="w-full h-full flex justify-center items-center text-light-50 bg-dark-900/30 transition-all transform duration-200 ease-in-out hover:(bg-dark-900/40) active:( bg-dark-900/60)"
         :class="
           isHover ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         "

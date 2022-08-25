@@ -7,16 +7,20 @@ export const ErrorPageRoute: RouteRecordRaw = {
   component: Layout,
   meta: {
     title: '错误页面',
-    noAuth: true
+    noAuth: true,
+    hide: true,
+    icon: markRaw(IconBxError)
   },
   children: [
     {
       path: '/:path(.*)*',
-      name: 'ErrorPageSon',
+      name: 'Error404',
       component: () => import('@pages/error/Error404.vue'),
       meta: {
-        title: '错误页面',
-        noAuth: true
+        title: '404',
+        noAuth: true,
+        hide: true,
+        icon: markRaw(IconTablerError404)
       }
     }
   ]
@@ -28,7 +32,8 @@ export const RedirectRoute: RouteRecordRaw = {
   component: Layout,
   meta: {
     title: '重定向',
-    noAuth: true
+    noAuth: true,
+    hide: true
   },
   children: [
     {
@@ -37,7 +42,8 @@ export const RedirectRoute: RouteRecordRaw = {
       component: () => import('@pages/redirect/Redirect.vue'),
       meta: {
         title: '重定向',
-        noAuth: true
+        noAuth: true,
+        hide: true
       }
     }
   ]

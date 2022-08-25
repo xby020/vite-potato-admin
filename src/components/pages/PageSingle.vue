@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-full flex flex-col bg-light-50 dark:(bg-zinc-800 text-light-50) rounded-md"
+    class="w-full h-full flex flex-col bg-light-50 text-dark-400 dark:(bg-neutral-900/80 text-light-50) rounded-md"
   >
     <!-- Header -->
     <div class="w-full h-16 flex justify-between items-center">
@@ -24,7 +24,11 @@
     <div class="w-full h-1px bg-gray-200" v-if="divider?.header"></div>
 
     <!-- content -->
-    <div class="w-full flex-auto"></div>
+    <div class="w-full flex-1 overflow-y-auto" v-scrollbar>
+      <div class="w-full h-full overflow-y-auto pr-4">
+        <slot name="default"></slot>
+      </div>
+    </div>
   </div>
 </template>
 

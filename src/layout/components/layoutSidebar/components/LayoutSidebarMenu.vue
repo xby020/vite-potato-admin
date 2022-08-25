@@ -31,42 +31,82 @@
           :data-index="recordIndex"
         >
           <!-- Title -->
-          <div
-            class="w-full h-12 rounded-t-sm flex justify-between items-center cursor-pointer select-none text-light-600 transform transition-all duration-200 hover:(bg-zinc-800/50)"
-            :class="menuClass(record)"
-            @click="clickSecondRoute(record, recordIndex)"
+          <n-popover
+            :disabled="isExtend"
+            trigger="hover"
+            placement="right"
+            content-style="padding: 0;"
           >
-            <div
-              class="w-full h-full flex items-center"
-              :class="isExtend ? 'justify-start gap-2' : 'justify-center'"
-            >
-              <!-- icon -->
-              <n-icon :size="24">
-                <component :is="record.meta?.icon"></component>
-              </n-icon>
+            <template #header>
+              <div class="w-full h-full flex items-center justify-center">
+                <!-- title -->
+                <h1 class="text-sm whitespace-nowrap">
+                  {{ record.meta?.title }}
+                </h1>
+              </div>
+            </template>
 
-              <!-- title -->
-              <h1 class="text-sm whitespace-nowrap" v-if="isExtend">
-                {{ record.meta?.title }}
-              </h1>
+            <template #trigger>
+              <div
+                class="w-full h-12 rounded-t-sm flex justify-between items-center cursor-pointer select-none text-light-600 transform transition-all duration-200 hover:(bg-zinc-800/50)"
+                :class="menuClass(record)"
+                @click="clickSecondRoute(record, recordIndex)"
+              >
+                <div
+                  class="w-full h-full flex items-center"
+                  :class="isExtend ? 'justify-start gap-2' : 'justify-center'"
+                >
+                  <!-- icon -->
+                  <n-icon :size="24">
+                    <component :is="record.meta?.icon"></component>
+                  </n-icon>
+
+                  <!-- title -->
+                  <h1 class="text-sm whitespace-nowrap" v-if="isExtend">
+                    {{ record.meta?.title }}
+                  </h1>
+                </div>
+
+                <!-- child arrow-->
+                <n-icon
+                  :size="24"
+                  class="text-zinc-400"
+                  v-if="
+                    isExtend &&
+                    record.children &&
+                    childrenListLength(record.children) !== 0
+                  "
+                >
+                  <i-mdi-keyboard-arrow-up
+                    v-if="showChildrenList[recordIndex]"
+                  ></i-mdi-keyboard-arrow-up>
+                  <i-mdi-keyboard-arrow-down v-else></i-mdi-keyboard-arrow-down>
+                </n-icon>
+              </div>
+            </template>
+            <!-- popover content -->
+            <div class="min-w-26 flex flex-col">
+              <div
+                class="w-full h-10 flex items-center gap-2 cursor-pointer select-none text-dark-400 dark:(text-light-50) transform transition-all duration-200 dark:hover:(bg-dark-600/30) hover:(bg-dark-600/10)"
+                :class="childMenuClass(childRecord)"
+                @click="jumpTo(childRecord)"
+                v-for="(
+                  childRecord, childRecordIndex
+                ) in record.children?.filter((child) => !child.meta?.hide)"
+                :key="childRecordIndex"
+              >
+                <!-- icon -->
+                <n-icon size="16">
+                  <component :is="childRecord.meta?.icon"></component>
+                </n-icon>
+
+                <!-- title -->
+                <h1 class="text-sm whitespace-nowrap">
+                  {{ childRecord.meta?.title }}
+                </h1>
+              </div>
             </div>
-
-            <!-- child arrow-->
-            <n-icon
-              :size="24"
-              class="text-zinc-400"
-              v-if="
-                isExtend &&
-                record.children &&
-                childrenListLength(record.children) !== 0
-              "
-            >
-              <i-mdi-keyboard-arrow-up
-                v-if="showChildrenList[recordIndex]"
-              ></i-mdi-keyboard-arrow-up>
-              <i-mdi-keyboard-arrow-down v-else></i-mdi-keyboard-arrow-down>
-            </n-icon>
-          </div>
+          </n-popover>
 
           <!-- Children -->
           <transition @enter="onChildEnter" @leave="onChildLeave">
@@ -256,6 +296,13 @@ function onChildLeave(el: HTMLElement, done: () => void) {
 // children list length
 const childrenListLength = (children: RouteRecordRaw[]) => {
   return children.filter((item) => !item.meta?.hide).length;
+};
+
+// can popover
+const hasPop = (record: RouteRecordRaw) => {
+  return (
+    record.children !== undefined && childrenListLength(record.children) !== 0
+  );
 };
 </script>
 

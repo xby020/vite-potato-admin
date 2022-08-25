@@ -4,6 +4,7 @@
     <div
       class="absolute bottom-0 w-100px h-58px bg-blue-600 rounded-t-2xl transition-all transform-gpu duration-200 ease-in-out"
       :style="{ left: `${108 * currentIndex}px` }"
+      v-show="currentIndex !== -1"
     >
       <div
         class="absolute bottom-0 left-0 h-4 aspect-square bg-blue-600 transform -translate-x-full"
@@ -23,7 +24,7 @@
 
     <!-- menu list -->
     <div
-      v-for="(route, routeIndex) in accessRoutes"
+      v-for="(route, routeIndex) in routeList"
       :key="routeIndex"
       class="h-full"
     >
@@ -54,13 +55,17 @@ const asyncRouteStore = useAsyncRoute();
 // route level 1
 const { accessRoutes } = shallowReactive(storeToRefs(asyncRouteStore));
 
+const routeList = computed(() => {
+  return accessRoutes.value.filter((route) => !route.meta?.hide);
+});
+
 const route = useRoute();
 const currentFirstRoute = computed(() => {
   return route.matched[0];
 });
 
 const currentIndex = computed(() => {
-  return accessRoutes.value.findIndex(
+  return routeList.value.findIndex(
     (item) => item.name === currentFirstRoute.value.name
   );
 });

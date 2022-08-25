@@ -28,7 +28,9 @@ export const useTabsStore = defineStore({
             return curTab.name === tab.name;
           }) !== -1;
         if (!hasTab) {
-          this.tabs.push(tab);
+          if (!tab.meta.hide) {
+            this.tabs.push(tab);
+          }
         }
       }
     },
