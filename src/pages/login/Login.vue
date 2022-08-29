@@ -42,41 +42,43 @@
         <h1 class="text-lg text-gray-400">Vite 中后台模板</h1>
       </div>
       <!-- login form -->
-      <n-card size="huge" class="hover:(shadow-md shadow-emerald-500)">
-        <n-form ref="formRef" :model="formValue" :rules="formRules">
-          <n-form-item label="用户名" path="user">
-            <n-input
-              v-model:value="formValue.user"
-              placeholder="输入用户名"
-              :allow-input="noSideSpace"
-              @keyup.native.enter="submit"
-            />
-          </n-form-item>
-          <n-form-item label="密码" path="password">
-            <n-input
-              type="password"
-              v-model:value="formValue.password"
-              placeholder="输入密码"
-              show-password-on="mousedown"
-              :allow-input="noSideSpace"
-              @keyup.native.enter="submit"
-            />
-          </n-form-item>
-        </n-form>
+      <n-config-provider class="w-full" :theme="null">
+        <n-card size="huge" class="hover:(shadow-md shadow-emerald-500)">
+          <n-form ref="formRef" :model="formValue" :rules="formRules">
+            <n-form-item label="用户名" path="user">
+              <n-input
+                v-model:value="formValue.user"
+                placeholder="输入用户名"
+                :allow-input="noSideSpace"
+                @keyup.native.enter="submit"
+              />
+            </n-form-item>
+            <n-form-item label="密码" path="password">
+              <n-input
+                type="password"
+                v-model:value="formValue.password"
+                placeholder="输入密码"
+                show-password-on="mousedown"
+                :allow-input="noSideSpace"
+                @keyup.native.enter="submit"
+              />
+            </n-form-item>
+          </n-form>
 
-        <template #action>
-          <n-button
-            block
-            type="primary"
-            :loading="loginLoading"
-            @click="submit"
-            :keyboard="true"
-            @keyup.native.enter="submit"
-          >
-            登录
-          </n-button>
-        </template>
-      </n-card>
+          <template #action>
+            <n-button
+              block
+              type="primary"
+              :loading="loginLoading"
+              @click="submit"
+              :keyboard="true"
+              @keyup.native.enter="submit"
+            >
+              登录
+            </n-button>
+          </template>
+        </n-card>
+      </n-config-provider>
     </div>
   </div>
 </template>
