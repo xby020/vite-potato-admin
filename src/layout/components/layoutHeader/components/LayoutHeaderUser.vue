@@ -6,14 +6,14 @@
         class="w-full h-full flex justify-center items-center gap-2 select-none cursor-pointer"
       >
         <!-- Avatar -->
-        <n-avatar size="large" :src="info.img" round>
-          <n-icon size="24" v-if="!info.img">
+        <n-avatar size="large" :src="info.avatar" round>
+          <n-icon size="24" v-if="!info.avatar">
             <i-mdi-account></i-mdi-account>
           </n-icon>
         </n-avatar>
 
         <!-- Name -->
-        <h1 class="tracking-wide">{{ info.username }}</h1>
+        <h1 class="tracking-wide">{{ info.name }}</h1>
       </div>
     </n-dropdown>
   </div>

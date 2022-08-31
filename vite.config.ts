@@ -71,6 +71,13 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         '@pages': resolve(__dirname, './src/pages')
       }
     },
+    json: {
+      // see https://cn.vitejs.dev/config/shared-options.html#json-stringify
+      stringify: true
+    },
+    preview: {
+      open: true
+    },
     server: {
       port: Number(env.VITE_PORT) || 14514,
       proxy: {

@@ -30,27 +30,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '数据表格',
           icon: markRaw(IconFaTable)
-        },
-        children: [
-          {
-            path: 'table-1',
-            name: 'Dashboard_table_1',
-            component: () => import('@pages/dashboard/DashboardTable1.vue'),
-            meta: {
-              title: '表格1',
-              icon: markRaw(IconFaTable)
-            }
-          },
-          {
-            path: 'table-2',
-            name: 'Dashboard_table_2',
-            component: () => import('@pages/dashboard/DashboardTable2.vue'),
-            meta: {
-              title: '表格1',
-              icon: markRaw(IconFaTable)
-            }
-          }
-        ]
+        }
       }
     ]
   }
