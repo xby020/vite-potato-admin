@@ -22,7 +22,7 @@ export interface LoginUserInfo {
    * 用户头像
    * @type {string}
    * @memberof LoginUserInfo
-   * @description 用户头像
+   * @description  用户头像
    */
   avatar: string;
 }
