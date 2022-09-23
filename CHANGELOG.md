@@ -1,4 +1,12 @@
 # 📄 Changelog 版本记录
+### [0.0.1](https://github.com/xby020/vite-potato-admin/compare/v0.0.0...v0.0.1) (2022-09-23)
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* eslint and prettier ([973f69f](https://github.com/xby020/vite-potato-admin/commit/973f69fbc3324c1952660c652399d6e331fd154a))
+* **release:** 0.0.0 ([2aa1af6](https://github.com/xby020/vite-potato-admin/commit/2aa1af67dd793c57d86286c26981cb5869851f7e))
+
 ## 0.0.0 (2022-09-08)
 
 
