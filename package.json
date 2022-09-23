@@ -8,7 +8,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "release": "standard-version",
-    "prepare": "husky install"
+    "prepare": "husky install && git push --follow-tags origin master"
   },
   "dependencies": {
     "@vueuse/head": "^0.7.9",
