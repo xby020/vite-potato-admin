@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/xby020/vite-potato-admin/compare/v0.1.2...v0.1.3) (2022-09-23)
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* **master:** release 0.1.1 ([9119224](https://github.com/xby020/vite-potato-admin/commit/9119224c1d68e877caf05164f3b45287e0239801))
+
+
+### 📦‍ Build System | 打包构建
+
+* **standard version lint:** Add standard version lint ([b9d594b](https://github.com/xby020/vite-potato-admin/commit/b9d594b902a2f31b8453a15d1e8d939204451c93))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **versionrc:** change js to cjs ([cdbcd9b](https://github.com/xby020/vite-potato-admin/commit/cdbcd9bc10d72d81116ae9c79b7b6afd2922f25f))
+
 ### [0.1.2](https://github.com/xby020/vite-potato-admin/compare/v0.1.0...v0.1.2) (2022-09-23)
 
 
