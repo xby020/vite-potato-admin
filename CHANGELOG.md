@@ -1,4 +1,11 @@
 # 🛠️ Changelog 版本更新日志
+### [0.1.6](https://github.com/xby020/vite-potato-admin/compare/v0.1.5...v0.1.6) (2022-09-23)
+
+
+### 📦‍ Build System | 打包构建
+
+* **script:** Push Changelog when auto generate it. ([38d2e93](https://github.com/xby020/vite-potato-admin/commit/38d2e93ce66c4a43cecbeab2c232f21d689a7a45))
+
 ### [0.1.5](https://github.com/xby020/vite-potato-admin/compare/v0.1.4...v0.1.5) (2022-09-23)
 
 ### [0.1.4](https://github.com/xby020/vite-potato-admin/compare/v0.1.3...v0.1.4) (2022-09-23)
