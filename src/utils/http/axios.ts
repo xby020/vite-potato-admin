@@ -51,6 +51,7 @@ function createService<T = any>(): AxiosInstance {
       }
     },
     (error) => {
+      window.$message.error(error.toString());
       // 响应错误
       throw error;
     }
