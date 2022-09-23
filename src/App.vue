@@ -23,10 +23,11 @@ import {
   useOsTheme
 } from 'naive-ui';
 import { useSystemStore } from '@/store/modules/system';
+import config from '../package.json';
 
 // logout app version
 console.log(
-  `%c🥔app version: ${import.meta.env.VITE_APP_VERSION}`,
+  `%c🥔app version: ${config.version}`,
   'color: #35f0ec; font-size: 18px;background:#3f3f3f;border-radius:3px;text-align:center;padding:5px;'
 );
 
