@@ -24,6 +24,7 @@ const renderIcon = (icon: any) => {
   };
 };
 
+// test
 const options = [
   {
     label: '浅色主题',
