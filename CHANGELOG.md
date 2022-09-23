@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/xby020/vite-potato-admin/compare/v0.1.0...v0.1.1) (2022-09-23)
+
+
+### ✏️ Documentation | 文档
+
+* **readme:** set link to CHANGELOG.md ([e9a178c](https://github.com/xby020/vite-potato-admin/commit/e9a178c4d2c7ea6d92e297e0e437f6154c7cfb00))
+
 ## [0.1.0](https://github.com/xby020/vite-potato-admin/compare/v0.0.1...v0.1.0) (2022-09-23)
 
 
