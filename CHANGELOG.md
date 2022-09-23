@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/xby020/vite-potato-admin/compare/v0.1.0...v0.1.2) (2022-09-23)
+
+
+### Features
+
+* **layoutHeaderControl:** Add Header description ([39a286c](https://github.com/xby020/vite-potato-admin/commit/39a286c74d57cb2d09946d72507c8bf411591327))
+
 ### [0.1.1](https://github.com/xby020/vite-potato-admin/compare/v0.1.0...v0.1.1) (2022-09-23)
 
 ## [0.1.0](https://github.com/xby020/vite-potato-admin/compare/v0.0.1...v0.1.0) (2022-09-23)
