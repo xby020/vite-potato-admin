@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.1](https://github.com/xby020/vite-potato-admin/compare/v0.1.0...v0.1.1) (2022-09-23)
+
+
+### ✏️ Documentation | 文档
+
+* **readme:** set link to CHANGELOG.md ([e9a178c](https://github.com/xby020/vite-potato-admin/commit/e9a178c4d2c7ea6d92e297e0e437f6154c7cfb00))
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* **release:** 0.1.1 ([0776b39](https://github.com/xby020/vite-potato-admin/commit/0776b3979de2e7229b13c434a3fb0d860eb97a6b))
+
+
+### 📦‍ Build System | 打包构建
+
+* **standard-version:** Add standard-version for manage version locally ([0f13e33](https://github.com/xby020/vite-potato-admin/commit/0f13e33ec4ce3d5f50722437aca56ed8761c4e1d))
+
 ### [0.1.1](https://github.com/xby020/vite-potato-admin/compare/v0.1.0...v0.1.1) (2022-09-23)
 
 ## [0.1.0](https://github.com/xby020/vite-potato-admin/compare/v0.0.1...v0.1.0) (2022-09-23)
