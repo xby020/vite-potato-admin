@@ -1,7 +1,4 @@
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
+# 📄 Changelog 版本记录
 ## 0.0.0 (2022-09-08)
 
 
