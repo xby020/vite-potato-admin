@@ -1,6 +1,11 @@
-# Changelog
+# 🛠️ Changelog 版本更新日志
+### [0.1.4](https://github.com/xby020/vite-potato-admin/compare/v0.1.3...v0.1.4) (2022-09-23)
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### 📦‍ Build System | 打包构建
+
+* **husky:** Add pre-push git hooks ([f404893](https://github.com/xby020/vite-potato-admin/commit/f4048932c047550e2aaa57554f12d4139cec5f04))
+* **versionrc:** Change Header template ([1d45552](https://github.com/xby020/vite-potato-admin/commit/1d4555276edc9ab97281ccab141876c6cdbad87a))
 
 ### [0.1.3](https://github.com/xby020/vite-potato-admin/compare/v0.1.2...v0.1.3) (2022-09-23)
 
