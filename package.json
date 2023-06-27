@@ -2,11 +2,13 @@
   "name": "vite-potato-admin",
   "private": true,
   "version": "0.2.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "release": "node script/release.js"
+    "release": "node script/release.js",
+    "api": "npx ytt -c config/ytt.ts"
   },
   "dependencies": {
     "@vueuse/head": "^1.1.26",
@@ -49,6 +51,7 @@
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-windicss": "^1.8.7",
     "vue-tsc": "^1.8.2",
-    "windicss": "^3.5.6"
+    "windicss": "^3.5.6",
+    "yapi-to-typescript": "^3.37.0"
   }
 }
