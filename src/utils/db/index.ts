@@ -1,4 +1,5 @@
-import { LowSync, LocalStorage } from 'lowdb';
+import { LowSync } from 'lowdb';
+import { LocalStorage } from 'lowdb/browser';
 import cookies from '../cookies';
 import lodash from 'lodash';
 
@@ -17,7 +18,7 @@ class LowSyncWithLodash<T> extends LowSync<T> {
 }
 
 const adapter = new LocalStorage<Database>('db');
-const db = new LowSyncWithLodash(adapter);
+const db = new LowSyncWithLodash(adapter, {});
 
 db.read();
 db.data = db.data || {};
