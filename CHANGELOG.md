@@ -1,4 +1,18 @@
 # 🛠️ Changelog 版本更新日志
+## [1.0.0](https://github.com/xby020/vite-potato-admin/compare/v0.2.0...v1.0.0) (2023-07-03)
+
+
+### ✨ Features | 新功能
+
+* **yapi-t0-typescript:** Add yapi auto generate api interface function. ([8ea403f](https://github.com/xby020/vite-potato-admin/commit/8ea403ff5ce74d16cf6be61f0cafac82ab91d66a))
+
+
+### 📦‍ Build System | 打包构建
+
+* **packages:** Updated packages. ([c358f7c](https://github.com/xby020/vite-potato-admin/commit/c358f7cd869f2f38c7be19be3130da080733108c))
+* **package:** Update package. ([6bc29ac](https://github.com/xby020/vite-potato-admin/commit/6bc29ac1fa4acf9c39c2fe8e732713e27e36e136))
+* **version:** Add standard version ([5104e80](https://github.com/xby020/vite-potato-admin/commit/5104e80d60fc0ae7a97fb50816e9a2b8d833c91f))
+
 ## [0.2.0](https://github.com/xby020/vite-potato-admin/compare/v0.1.1...v0.2.0) (2022-09-26)
 
 
