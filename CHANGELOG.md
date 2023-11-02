@@ -1,4 +1,11 @@
 # 🛠️ Changelog 版本更新日志
+## [1.1.0](https://github.com/xby020/vite-potato-admin/compare/v1.0.0...v1.1.0) (2023-11-02)
+
+
+### ✨ Features | 新功能
+
+* **package:** Update dependencies in package.json ([4b73367](https://github.com/xby020/vite-potato-admin/commit/4b7336776424e61f47dd821f339d2e7245f0f050))
+
 ## [1.0.0](https://github.com/xby020/vite-potato-admin/compare/v0.2.0...v1.0.0) (2023-07-03)
 
 
