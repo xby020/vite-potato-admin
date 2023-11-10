@@ -1,24 +1,10 @@
 <template>
-  <div
-    ref="sidebar"
-    class="h-full bg-[#1F4690] dark:bg-[#293462] text-light-50 p-2 flex flex-col justify-start items-center transition-all duration-400 ease-in-out"
-    :class="isExtend ? 'w-72' : 'w-18'"
-  >
+  <div ref="sidebar" class="h-full dark:(bg-base-dark text-text-dark) bg-base text-text p-2 flex flex-col justify-start items-center transition-all duration-400 ease-in-out" :class="isExtend ? 'w-72' : 'w-18'">
     <!-- Logo -->
-    <div
-      class="flex gap-2 items-center rounded-lg p-2 cursor-pointer select-none transition-all duration-200 ease-in-out text-zinc-600"
-    >
-      <n-image
-        src="/icon/logo.svg"
-        class="w-10 h-10"
-        object-fit="cover"
-        preview-disabled
-      />
+    <div class="flex gap-2 items-center rounded-lg p-2 cursor-pointer select-none transition-all duration-200 ease-in-out">
+      <n-image src="/icon/logo.svg" class="w-10 h-10" object-fit="cover" preview-disabled />
 
-      <h1
-        class="text-lg text-light-50 font-bold whitespace-nowrap"
-        v-if="isExtend"
-      >
+      <h1 class="text-lg font-bold whitespace-nowrap" v-if="isExtend">
         {{ appTitle }}
       </h1>
     </div>

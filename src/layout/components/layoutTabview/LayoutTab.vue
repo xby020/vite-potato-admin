@@ -1,38 +1,21 @@
 <template>
-  <div
-    class="relative h-full flex justify-center items-center"
-    @mouseenter="isHover = true"
-    @mouseleave="isHover = false"
-    @click.middle="handleTabClose"
-  >
+  <div class="relative h-full flex justify-center items-center" @mouseenter="isHover = true" @mouseleave="isHover = false" @click.middle="handleTabClose">
     <!-- Close zone -->
     <div class="absolute z-1 right-0 h-34px w-4 overflow-hidden cursor-pointer">
       <div
         v-if="!static"
-        class="w-full h-full flex justify-center items-center text-light-50 bg-dark-900/30 transition-all transform duration-200 ease-in-out hover:(bg-dark-900/40) active:( bg-dark-900/60)"
-        :class="
-          isHover ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-        "
+        class="w-full h-full flex justify-center items-center text-text-dark bg-dark-900/60 transition-all transform duration-200 ease-in-out hover:(bg-dark-900/40) active:( bg-dark-900/10)"
+        :class="isHover ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'"
         @click="handleTabClose"
       >
-        <n-icon
-          size="12"
-          class="transition-all transform duration-200 ease-in-out"
-        >
+        <n-icon size="12" class="transition-all transform duration-200 ease-in-out">
           <i-mdi-close></i-mdi-close>
         </n-icon>
       </div>
     </div>
 
     <!-- Main Tab -->
-    <n-button
-      :color="btnColor"
-      :class="textColor"
-      size="medium"
-      strong
-      @click="handleTabClick"
-      :focusable="false"
-    >
+    <n-button :color="btnColor" :class="textColor" size="medium" strong @click="handleTabClick" :focusable="false">
       <template #icon>
         <n-icon size="18">
           <component :is="icon"></component>
@@ -49,6 +32,7 @@ import { PageEnum } from '@/enums/pageEnum';
 import { useSystemStore } from '@/store/modules/system';
 import { RouteRecord, useTabsStore } from '@/store/modules/tabs';
 import { FunctionalComponent, SVGAttributes } from 'vue';
+import { colorPanel } from '@root/config/color';
 
 interface Props {
   icon: FunctionalComponent<SVGAttributes, {}>;
@@ -70,16 +54,16 @@ const { isDark } = storeToRefs(systemStore);
 // tab apperance
 const btnColor = computed(() => {
   if (props.current) {
-    return '#2563EB';
+    return colorPanel.blue;
   } else {
     return isDark.value ? '#4A4A4C' : '#F9FAFB';
   }
 });
 const textColor = computed(() => {
   if (props.current) {
-    return '!text-light-50';
+    return '!text-white';
   } else {
-    return isDark.value ? '!text-light-50' : '!text-dark-400';
+    return isDark.value ? '!text-text-dark' : '!text-text';
   }
 });
 
@@ -93,9 +77,7 @@ function handleTabClick() {
 }
 function handleTabClose() {
   // 获取上个tab
-  const currentTabIndex = tabs.value.findIndex(
-    (tab) => tab.name === props.name
-  );
+  const currentTabIndex = tabs.value.findIndex((tab) => tab.name === props.name);
   const prevTabIndex = currentTabIndex - 1;
   const prevTab = tabs.value[prevTabIndex];
 

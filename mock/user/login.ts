@@ -5,7 +5,7 @@ const userMockData = {
   name: '管理员',
   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
   uuid: 'admin',
-  token: 'token123456'
+  token: 'token123456',
 };
 
 export default [
@@ -19,14 +19,14 @@ export default [
         return {
           code: 200,
           msg: '登录成功',
-          data: userMockData
+          data: userMockData,
         };
       } else {
         return {
           code: 500,
-          msg: '用户名或密码错误'
+          msg: '用户名或密码错误',
         };
       }
-    }
-  }
+    },
+  },
 ] as MockMethod[];

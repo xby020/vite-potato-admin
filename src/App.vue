@@ -1,11 +1,6 @@
 <template>
-  <div class="w-screen h-screen">
-    <n-config-provider
-      :locale="zhCN"
-      :date-locale="dateZhCN"
-      :theme="systemTheme"
-      :theme-overrides="themeOverrides"
-    >
+  <div class="w-screen h-screen text-text dark:text-text-dark">
+    <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="systemTheme" :theme-overrides="isDark ? darkThemeOverrides : lightThemeOverrides">
       <app-provider>
         <router-view></router-view>
       </app-provider>
@@ -15,21 +10,13 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
-import {
-  zhCN,
-  dateZhCN,
-  GlobalThemeOverrides,
-  darkTheme,
-  useOsTheme
-} from 'naive-ui';
+import { zhCN, dateZhCN, GlobalThemeOverrides, darkTheme, useOsTheme } from 'naive-ui';
 import { useSystemStore } from '@/store/modules/system';
 import config from '../package.json';
+import { colorPanel } from '@root/config/color';
 
 // logout app version
-console.log(
-  `%c🥔app version: ${config.version}`,
-  'color: #35f0ec; font-size: 18px;background:#3f3f3f;border-radius:3px;text-align:center;padding:5px;'
-);
+console.log(`%c🥔app version: ${config.version}`, 'color: #35f0ec; font-size: 18px;background:#3f3f3f;border-radius:3px;text-align:center;padding:5px;');
 
 // set Icon
 const iconPath = ref('/icon/logo.svg');
@@ -41,17 +28,26 @@ const title = import.meta.env.VITE_APP_TITLE;
 useHead({
   title: computed(() => {
     return `${route.meta.title || ''} - ${title}`;
-  })
+  }),
 });
 
 // Naive ui config
-const themeOverrides: GlobalThemeOverrides = {
+const lightThemeOverrides: GlobalThemeOverrides = {
   common: {
-    primaryColor: '#0096FFFF',
-    primaryColorHover: '#009DFFFF',
-    primaryColorPressed: '#0077FFFF',
-    primaryColorSuppl: '#004CFFFF'
-  }
+    primaryColor: colorPanel.teal,
+    primaryColorHover: colorPanel.sky,
+    primaryColorPressed: colorPanel.sapphire,
+    primaryColorSuppl: colorPanel.lavender,
+  },
+};
+
+const darkThemeOverrides: GlobalThemeOverrides = {
+  common: {
+    primaryColor: colorPanel['teal-dark'],
+    primaryColorHover: colorPanel['sky-dark'],
+    primaryColorPressed: colorPanel['sapphire-dark'],
+    primaryColorSuppl: colorPanel['lavender-dark'],
+  },
 };
 
 // System Settings
@@ -96,21 +92,19 @@ watch(
     }
   },
   {
-    immediate: true
-  }
+    immediate: true,
+  },
 );
 </script>
 
 <style scoped>
 @font-face {
   font-family: Emoji;
-  src: local('Apple Color Emojiji'), local('Segoe UI Emoji'),
-    local('Segoe UI Symbol'), local('Noto Color Emoji');
+  src: local('Apple Color Emojiji'), local('Segoe UI Emoji'), local('Segoe UI Symbol'), local('Noto Color Emoji');
   unicode-range: U+1F000-1F644, U+203C-3299;
 }
 
 body {
-  font-family: system-ui, —apple-system, Segoe UI, Rototo, Emoji, Helvetica,
-    Arial, sans-serif;
+  font-family: system-ui, —apple-system, Segoe UI, Rototo, Emoji, Helvetica, Arial, sans-serif;
 }
 </style>

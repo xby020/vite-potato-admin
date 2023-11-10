@@ -1,5 +1,3 @@
-import { defineConfig } from 'windicss/helpers';
-
 export const colorPanel = {
   rosewater: '#dc8a78',
   flamingo: '#dd7878',
@@ -54,40 +52,3 @@ export const colorPanel = {
   'mantle-dark': '#181825',
   'crust-dark': '#11111b',
 };
-
-export default defineConfig({
-  plugins: [
-    require('windicss/plugin/aspect-ratio'),
-    require('@windicss/plugin-heropatterns')({
-      patterns: [],
-      colors: {
-        default: '#E1F194',
-      },
-      opacity: {
-        default: 0.4,
-      },
-    }),
-  ],
-
-  theme: {
-    extend: {
-      fontFamily: {
-        number: ['HeadLineA'],
-      },
-      colors: {
-        ...colorPanel,
-      },
-      boxShadow: {
-        'in-sm': 'inset 0 0 8px rgba(0, 0, 0, 0.06)',
-        in: 'inset 0 0 12px rgba(0, 0, 0, 0.06)',
-        'in-big': 'inset 0 1px 30px rgba(0, 0, 0, 0.30)',
-        'out-big': '0 1px 30px rgba(0, 0, 0, 0.30)',
-        out: '0 0 12px rgba(0, 0, 0, 0.06)',
-      },
-    },
-  },
-
-  shortcuts: {
-    'text-primary': 'text-blue dark:text-blue-dark',
-  },
-});

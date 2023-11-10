@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export interface ConfigState {
-  topRouteMenu: boolean
+  topRouteMenu: boolean;
 }
 
 export const useConfigStore = defineStore({
@@ -11,4 +11,4 @@ export const useConfigStore = defineStore({
   }),
   getters: {},
   actions: {},
-})
+});

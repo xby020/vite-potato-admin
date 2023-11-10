@@ -1,8 +1,6 @@
 <template>
-  <div class="w-screen h-screen overflow-hidden bg-zinc-200 dark:bg-slate-800">
-    <div
-      class="w-full h-full flex flex-row justify-start items-center overflow-hidden"
-    >
+  <div class="w-screen h-screen overflow-hidden bg-crust dark:bg-crust-dark">
+    <div class="w-full h-full flex flex-row justify-start items-center overflow-hidden">
       <!-- Siderbar -->
       <div class="h-full">
         <layout-sidebar></layout-sidebar>

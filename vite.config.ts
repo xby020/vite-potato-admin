@@ -1,21 +1,22 @@
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-import WindiCSS from 'vite-plugin-windicss'
-import Components from 'unplugin-vue-components/vite'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import AutoImport from 'unplugin-auto-import/vite'
-import { UserConfigExport, ConfigEnv, loadEnv } from 'vite'
-import { configMockPlugin } from './src/utils/mock'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-import { createHtmlPlugin } from 'vite-plugin-html'
+import vue from '@vitejs/plugin-vue';
+import { resolve } from 'path';
+import WindiCSS from 'vite-plugin-windicss';
+import Components from 'unplugin-vue-components/vite';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import AutoImport from 'unplugin-auto-import/vite';
+import { UserConfigExport, ConfigEnv, loadEnv } from 'vite';
+import { configMockPlugin } from './src/utils/mock';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfigExport => {
-  const root = process.cwd()
-  const env = loadEnv(mode, root)
+  const root = process.cwd();
+  const env = loadEnv(mode, root);
 
   return {
+    base: './',
     plugins: [
       vue(),
       WindiCSS(),
@@ -58,6 +59,9 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         resolvers: [
           IconsResolver({
             prefix: 'icon',
+            alias: {
+              ms: 'fluent',
+            },
           }),
         ],
       }),
@@ -67,6 +71,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     ],
     resolve: {
       alias: {
+        '@root': resolve(__dirname, './'),
         '@': resolve(__dirname, './src'),
         '@pages': resolve(__dirname, './src/pages'),
       },
@@ -102,5 +107,5 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         },
       },
     },
-  }
-}
+  };
+};

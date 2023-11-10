@@ -1,5 +1,5 @@
 <template>
-  <page-single :title="route.meta.title">
+  <page-card scroll>
     <div class="w-full h-full p-2">
       <n-table :single-line="false">
         <thead>
@@ -36,11 +36,9 @@
         </tbody>
       </n-table>
     </div>
-  </page-single>
+  </page-card>
 </template>
 
-<script setup lang="ts">
-const route = useRoute();
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

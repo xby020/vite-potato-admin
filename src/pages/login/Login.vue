@@ -1,36 +1,28 @@
 <template>
-  <div
-    class="relative w-screen h-screen flex flex-col justify-start items-center bg-gray-800"
-  >
+  <div class="relative w-screen h-screen flex flex-col justify-start items-center bg-gradient-to-tr from-[#3D4E81] via-[#5753C9] to-[#6E7FF3]">
     <!-- Bg -->
+    <div class="absolute top-0 left-0 w-full h-full bg-hero-circuit-board opacity-20 mix-blend-difference"></div>
     <div class="absolute top-0 left-0 area">
-      <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul class="circles mix-blend-difference">
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
+        <li class="bg-hero-plus"></li>
       </ul>
     </div>
     <!-- login container -->
-    <div
-      class="relative z-999 max-w-260 min-w-100 h-full pt-24 flex gap-12 flex-col justify-start items-center"
-    >
+    <div class="relative z-999 max-w-260 min-w-100 h-full pt-24 flex gap-12 flex-col justify-start items-center">
       <!-- Title -->
       <div class="flex justify-center items-center gap-6">
         <!-- logo -->
         <div class="flex">
-          <n-image
-            src="/icon/logo.svg"
-            class="w-24 h-24"
-            object-fit="cover"
-            preview-disabled
-          />
+          <n-image src="/icon/logo.svg" class="w-24 h-24" object-fit="cover" preview-disabled />
         </div>
         <!-- name -->
         <div class="text-4xl text-white font-bold tracking-widest">
@@ -39,43 +31,22 @@
       </div>
       <!-- subtitle -->
       <div class="flex justify-center items-center">
-        <h1 class="text-lg text-gray-400">Vite 中后台模板</h1>
+        <h1 class="text-lg text-gray-400">{{ appSubTitle }}</h1>
       </div>
       <!-- login form -->
       <n-config-provider class="w-full" :theme="null">
         <n-card size="huge" class="hover:(shadow-md shadow-emerald-500)">
           <n-form ref="formRef" :model="formValue" :rules="formRules">
             <n-form-item label="用户名" path="user">
-              <n-input
-                v-model:value="formValue.user"
-                placeholder="输入用户名"
-                :allow-input="noSideSpace"
-                @keyup.native.enter="submit"
-              />
+              <n-input v-model:value="formValue.user" placeholder="输入用户名" :allow-input="noSideSpace" @keyup.native.enter="submit" />
             </n-form-item>
             <n-form-item label="密码" path="password">
-              <n-input
-                type="password"
-                v-model:value="formValue.password"
-                placeholder="输入密码"
-                show-password-on="mousedown"
-                :allow-input="noSideSpace"
-                @keyup.native.enter="submit"
-              />
+              <n-input type="password" v-model:value="formValue.password" placeholder="输入密码" show-password-on="mousedown" :allow-input="noSideSpace" @keyup.native.enter="submit" />
             </n-form-item>
           </n-form>
 
           <template #action>
-            <n-button
-              block
-              type="primary"
-              :loading="loginLoading"
-              @click="submit"
-              :keyboard="true"
-              @keyup.native.enter="submit"
-            >
-              登录
-            </n-button>
+            <n-button block type="primary" :loading="loginLoading" @click="submit" :keyboard="true" @keyup.native.enter="submit"> 登录 </n-button>
           </template>
         </n-card>
       </n-config-provider>
@@ -92,24 +63,20 @@ const userStore = useUserStore();
 
 // Title
 const appTitle = ref(import.meta.env.VITE_APP_TITLE);
+const appSubTitle = ref(import.meta.env.VITE_APP_SUBTITLE || '');
 
 // Form
 const formRef = ref<FormInst | null>(null);
 const formValue = ref({
   user: '',
-  password: ''
+  password: '',
 });
 // form validation
-const noSideSpace = (value: string) =>
-  !value.startsWith(' ') && !value.endsWith(' ');
+const noSideSpace = (value: string) => !value.startsWith(' ') && !value.endsWith(' ');
 
 const formRules: FormRules = {
-  user: [
-    { required: true, message: '请输入用户名', trigger: ['input', 'blur'] }
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: ['input', 'blur'] }
-  ]
+  user: [{ required: true, message: '请输入用户名', trigger: ['input', 'blur'] }],
+  password: [{ required: true, message: '请输入密码', trigger: ['input', 'blur'] }],
 };
 
 // Login
@@ -168,7 +135,7 @@ async function submit() {
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(214, 238, 247, 0.2);
   animation: animate 25s linear infinite;
   bottom: -150px;
 }
