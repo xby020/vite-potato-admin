@@ -14,7 +14,7 @@
 
     <!-- Route list -->
     <div class="relative w-full h-full flex flex-col justify-start items-center gap-2">
-      <transition-group tag="div" class="absolute w-full h-full flex flex-col justify-start items-center gap-2 overflow-y-auto p-1" @enter="onEnter" @leave="onLeave">
+      <transition-group tag="div" class="absolute w-full h-full flex flex-col justify-start items-center gap-2 overflow-y-auto scroll p-2" @enter="onEnter" @leave="onLeave">
         <div v-for="(record, recordIndex) in menuList" :key="`${record.path}${recordIndex}`" :class="menuBorderClass(record)" class="w-full rounded-md flex flex-col justify-center items-center" :data-index="recordIndex">
           <!-- Title -->
           <n-popover

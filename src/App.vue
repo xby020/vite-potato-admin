@@ -97,7 +97,7 @@ watch(
 );
 </script>
 
-<style lang="pcss">
+<style>
 @font-face {
   font-family: Emoji;
   src: local('Apple Color Emojiji'), local('Segoe UI Emoji'), local('Segoe UI Symbol'), local('Noto Color Emoji');
@@ -108,16 +108,29 @@ body {
   font-family: system-ui, —apple-system, Segoe UI, Rototo, Emoji, Helvetica, Arial, sans-serif;
 }
 
-::-webkit-scrollbar {
-  @apply rounded-full w-2 flex justify-center items-center
+div::-webkit-scrollbar {
+  @apply rounded-full w-2 flex justify-center items-center;
 }
 
-::-webkit-scrollbar-track {
-  @apply rounded-full bg-surface0/30 dark:bg-surface0-dark/30
+div::-webkit-scrollbar-track {
+  @apply rounded-full bg-surface0/30 dark:bg-surface0-dark/30;
 }
 
+div::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-lavender dark:bg-lavender-dark;
+}
 
-::-webkit-scrollbar-thumb {
-  @apply  rounded-full bg-lavender dark:bg-lavender-dark
+.scroll::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-transparent;
+}
+
+.scroll:hover::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-lavender dark:bg-lavender-dark;
+}
+
+div::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
 }
 </style>
