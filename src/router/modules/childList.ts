@@ -31,17 +31,348 @@ const routes: Array<RouteRecordRaw> = [
           title: '列表2',
           icon: markRaw(IconFaTable),
         },
-        children: [
-          {
-            path: 'two_one',
-            name: 'child_list_two_one',
-            component: () => import('@pages/List/ListSecond2.vue'),
-            meta: {
-              title: '列表2-1',
-              icon: markRaw(IconFaTable),
-            },
-          },
-        ],
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
+      },
+      {
+        path: 'two',
+        name: 'child_list_two',
+        component: () => import('@pages/List/ListSecond1.vue'),
+        meta: {
+          title: '列表2',
+          icon: markRaw(IconFaTable),
+        },
       },
     ],
   },

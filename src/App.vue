@@ -97,7 +97,7 @@ watch(
 );
 </script>
 
-<style scoped>
+<style lang="pcss">
 @font-face {
   font-family: Emoji;
   src: local('Apple Color Emojiji'), local('Segoe UI Emoji'), local('Segoe UI Symbol'), local('Noto Color Emoji');
@@ -106,5 +106,18 @@ watch(
 
 body {
   font-family: system-ui, —apple-system, Segoe UI, Rototo, Emoji, Helvetica, Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+  @apply rounded-full w-2 flex justify-center items-center
+}
+
+::-webkit-scrollbar-track {
+  @apply rounded-full bg-surface0/30 dark:bg-surface0-dark/30
+}
+
+
+::-webkit-scrollbar-thumb {
+  @apply  rounded-full bg-lavender dark:bg-lavender-dark
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <div class="relative h-full flex justify-center items-end gap-4">
     <!-- menu select bg -->
-    <div class="absolute bottom-0 w-100px h-58px bg-blue rounded-t-2xl transition-all transform-gpu duration-200 ease-in-out" :style="currentMenuBgStyle" v-show="currentIndex !== -1">
-      <div class="absolute bottom-0 left-0 h-4 aspect-square bg-blue transform -translate-x-full">
+    <div class="absolute bottom-0 shadow-in-big w-100px h-58px bg-blue rounded-t-2xl transition-all transform-gpu duration-200 ease-in-out" :style="currentMenuBgStyle" v-show="currentIndex !== -1">
+      <div class="absolute bottom-0 left-0 h-4 aspect-square bg-blue dark:bg-[#1853C7] transform -translate-x-full">
         <div class="absolute top-0 left-0 w-full h-full rounded-br-full bg-base dark:bg-base-dark"></div>
       </div>
-      <div class="absolute bottom-0 right-0 h-4 aspect-square bg-blue transform translate-x-full">
+      <div class="absolute bottom-0 right-0 h-4 aspect-square bg-blue dark:bg-[#1853C7] transform translate-x-full">
         <div class="absolute top-0 left-0 w-full h-full rounded-bl-full bg-base dark:bg-base-dark"></div>
       </div>
     </div>

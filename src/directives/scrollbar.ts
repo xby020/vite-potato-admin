@@ -5,7 +5,8 @@ const scrollbar = (options?: ScrollbarOptions) => {
   return {
     mounted: (el: any) => {
       Scrollbar.init(el, options);
-    }
+      Scrollbar.detachStyle();
+    },
   };
 };
 

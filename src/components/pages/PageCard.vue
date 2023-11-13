@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full flex flex-col pb-4 pr-2 bg-light-200 text-text dark:(bg-base-dark text-text-dark) rounded-md">
+  <div class="w-full h-full flex flex-col gap-2 pb-4 pr-2 bg-light-200 text-text dark:(bg-base-dark text-text-dark) rounded-md">
     <!-- Header -->
     <div class="w-full h-16 flex justify-between items-center">
       <!-- title -->
@@ -19,10 +19,10 @@
     </div>
 
     <!-- divider -->
-    <div class="w-full h-1px bg-gray-200" v-if="divider"></div>
+    <div class="w-full h-1px bg-surface0/50 dark:bg-surface0-dark" v-if="divider"></div>
 
     <!-- content -->
-    <div v-if="scroll" class="w-full flex-1 overflow-y-auto" v-scrollbar>
+    <div v-if="scroll" class="w-full flex-1 overflow-y-auto">
       <div class="w-full h-full overflow-y-auto pr-4">
         <slot name="default"></slot>
       </div>
