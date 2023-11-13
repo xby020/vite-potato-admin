@@ -1,12 +1,12 @@
 <template>
   <div class="w-full h-full">
     <!-- Current first route -->
-    <div class="w-full h-12 mb-2 bg-blue dark:bg-blue-dark rounded-md flex justify-center items-center">
+    <div class="w-full h-12 mb-2 bg-blue dark:bg-sky rounded-md flex justify-center items-center">
       <h1 class="text-lg font-bold text-white tracking-widest flex justify-center items-center gap-2">
         <n-icon size="24">
           <component :is="route.matched[0].meta.icon"></component>
         </n-icon>
-        <h1 v-if="isExtend" class="whitespace-nowrap">
+        <h1 v-if="isExtend" class="whitespace-nowrap text-white">
           {{ route.matched[0].meta.title }}
         </h1>
       </h1>
