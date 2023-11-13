@@ -7,7 +7,7 @@ export interface ConfigState {
 export const useConfigStore = defineStore({
   id: 'config',
   state: () => ({
-    topRouteMenu: false,
+    topRouteMenu: true,
   }),
   getters: {},
   actions: {},
