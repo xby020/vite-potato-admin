@@ -1,4 +1,36 @@
 # 🛠️ Changelog 版本更新日志
+## [0.3.0](https://github.com/xby020/vite-potato-admin/compare/v0.2.0...v0.3.0) (2024-03-18)
+
+
+### ✨ Features | 新功能
+
+* **LayoutHeaderTabs:** Change style about tabs in header. ([5479994](https://github.com/xby020/vite-potato-admin/commit/5479994e67c73b420d8270d49be9189ffea65464))
+* **package:** update ([e5e2de7](https://github.com/xby020/vite-potato-admin/commit/e5e2de76012ce8df40ef5032c8eb3754f7676471))
+* **package:** Update dependencies in package.json ([4b73367](https://github.com/xby020/vite-potato-admin/commit/4b7336776424e61f47dd821f339d2e7245f0f050))
+* **scrollbar:** Add scroll class for auto hide scrollbar ([fd91cc3](https://github.com/xby020/vite-potato-admin/commit/fd91cc365e313bcc6aadc5abf56620cf4d3b9574))
+* **scrollbar:** Change scrollbar style ([eb86ab7](https://github.com/xby020/vite-potato-admin/commit/eb86ab72c90e283e4a738da5282614e9c9eb1e22))
+* **sidebar:** sidebar title style ([fa02c5e](https://github.com/xby020/vite-potato-admin/commit/fa02c5e2dfd8c95767095517743b113b6d26ae33))
+* **Update:** Improve UI style ([c2d66bc](https://github.com/xby020/vite-potato-admin/commit/c2d66bc8cd7b119597b7d9e0f992c06f16035b27))
+* **yapi-t0-typescript:** Add yapi auto generate api interface function. ([8ea403f](https://github.com/xby020/vite-potato-admin/commit/8ea403ff5ce74d16cf6be61f0cafac82ab91d66a))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **package:** Fix glitch with new version about package. ([58ad455](https://github.com/xby020/vite-potato-admin/commit/58ad455f237f3e05d3506b5e1470a91c5dd678b2))
+
+
+### 📦‍ Build System | 打包构建
+
+* **packages:** Updated packages. ([c358f7c](https://github.com/xby020/vite-potato-admin/commit/c358f7cd869f2f38c7be19be3130da080733108c))
+* **package:** Update package. ([6bc29ac](https://github.com/xby020/vite-potato-admin/commit/6bc29ac1fa4acf9c39c2fe8e732713e27e36e136))
+* **version:** Add standard version ([5104e80](https://github.com/xby020/vite-potato-admin/commit/5104e80d60fc0ae7a97fb50816e9a2b8d833c91f))
+
+
+### 🚀 Chore | 构建/工程依赖/工具
+
+* **release:** 1.0.0 ([242df7d](https://github.com/xby020/vite-potato-admin/commit/242df7d2dd5d5a8532d4c82ba40dd081814074f9))
+* **release:** 1.1.0 ([f689941](https://github.com/xby020/vite-potato-admin/commit/f68994131401b19a8bd462dbf98b3b66a6fb6d40))
+
 ## [1.1.0](https://github.com/xby020/vite-potato-admin/compare/v1.0.0...v1.1.0) (2023-11-02)
 
 
