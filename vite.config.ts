@@ -6,7 +6,6 @@ import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import AutoImport from 'unplugin-auto-import/vite';
 import { UserConfigExport, ConfigEnv, loadEnv } from 'vite';
-import { configMockPlugin } from './src/utils/mock';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import { createHtmlPlugin } from 'vite-plugin-html';
 
@@ -16,7 +15,6 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
   const env = loadEnv(mode, root);
 
   return {
-    base: './',
     plugins: [
       vue(),
       WindiCSS(),
@@ -66,8 +64,6 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
         ],
       }),
 
-      // mock plugin
-      configMockPlugin(env),
     ],
     resolve: {
       alias: {

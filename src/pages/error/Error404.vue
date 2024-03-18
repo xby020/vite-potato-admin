@@ -20,7 +20,6 @@
 
 <script setup lang="ts">
 import { Vue3Lottie } from 'vue3-lottie';
-import 'vue3-lottie/dist/style.css';
 import notFoundJson from '@/assets/lottie/404-not-found.json';
 </script>
 
